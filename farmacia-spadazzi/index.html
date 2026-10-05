@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Farmacia Spadazzi – Ponte Milvio, Roma</title>
+  <meta name="description" content="Farmacia Spadazzi a Ponte Milvio, Roma. Farmaci, consiglio del farmacista, dermocosmesi, veterinaria e servizi per la salute in Piazzale di Ponte Milvio 15.">
+  <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Pharmacy",
+    "name": "Farmacia Spadazzi - Ponte Milvio",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Piazzale di Ponte Milvio 15",
+      "postalCode": "00135",
+      "addressLocality": "Roma",
+      "addressCountry": "IT"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 41.937414, "longitude": 12.465591 }
+  }
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="#" class="brand">
+        <img src="assets/logo.svg" alt="" width="44" height="44">
+        <span>
+          <strong>Farmacia Spadazzi</strong>
+          <small>Ponte Milvio · Roma</small>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Apri menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav" class="nav">
+        <a href="#servizi">Servizi</a>
+        <a href="#chi-siamo">Chi siamo</a>
+        <a href="#orari">Orari</a>
+        <a href="#contatti">Contatti</a>
+        <a href="#contatti" class="btn btn-small">Prenota</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="eyebrow">La tua farmacia a Ponte Milvio</p>
+          <h1>Salute e benessere, con il consiglio di chi ti conosce.</h1>
+          <p class="lead">Farmaci, prodotti per la cura della persona, veterinaria e servizi di prevenzione, a due passi dal ponte.</p>
+          <div class="hero-actions">
+            <a href="#contatti" class="btn">Contattaci</a>
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Farmacia+Spadazzi+Ponte+Milvio+Roma" class="btn btn-ghost" target="_blank" rel="noopener">Indicazioni stradali</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <img src="assets/logo.svg" alt="Logo Farmacia Spadazzi" width="96" height="96">
+          <dl>
+            <div><dt>Indirizzo</dt><dd>Piazzale di Ponte Milvio 15<br>00135 Roma</dd></div>
+            <!-- TODO: confirm opening hours with the pharmacy -->
+            <div><dt>Oggi</dt><dd id="today-hours">Vedi orari</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <section id="servizi" class="section">
+      <div class="container">
+        <h2>I nostri servizi</h2>
+        <p class="section-lead">Tutto quello che ti serve per la salute della tua famiglia, in un unico posto.</p>
+        <div class="grid">
+          <article class="card">
+            <div class="icon" aria-hidden="true">💊</div>
+            <h3>Farmaci e ricette</h3>
+            <p>Farmaci da banco e con ricetta, anche elettronica. Ordini rapidi per i prodotti non disponibili.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">🩺</div>
+            <h3>Prevenzione</h3>
+            <p>Misurazione della pressione e controlli di base, con il consiglio del farmacista.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">✨</div>
+            <h3>Dermocosmesi e bellezza</h3>
+            <p>Selezione di marchi per la cura della pelle e consulenze personalizzate.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">🐾</div>
+            <h3>Veterinaria</h3>
+            <p>Farmaci e prodotti per la salute dei tuoi animali domestici.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">🌿</div>
+            <h3>Naturale e omeopatia</h3>
+            <p>Integratori, fitoterapia e rimedi naturali scelti con cura.</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">👶</div>
+            <h3>Mamma e bambino</h3>
+            <p>Alimentazione, igiene e prodotti per la prima infanzia.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="chi-siamo" class="section section-alt">
+      <div class="container split">
+        <div>
+          <h2>Chi siamo</h2>
+          <p>La Farmacia Spadazzi è un punto di riferimento per il quartiere di Ponte Milvio. Il nostro team di farmacisti ti accoglie ogni giorno con professionalità e attenzione, per aiutarti a scegliere il prodotto giusto e prenderti cura della tua salute.</p>
+          <p>Chiedici un consiglio: siamo qui per ascoltarti.</p>
+        </div>
+        <ul class="highlights">
+          <li><strong>Consiglio esperto</strong><span>Farmacisti sempre a disposizione</span></li>
+          <li><strong>Nel cuore di Ponte Milvio</strong><span>Facile da raggiungere a piedi e con i mezzi</span></li>
+          <li><strong>Ampio assortimento</strong><span>Farmaci, cosmesi, veterinaria e altro</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="orari" class="section">
+      <div class="container split">
+        <div>
+          <h2>Orari di apertura</h2>
+          <!-- TODO: placeholder hours, replace with the pharmacy's real schedule -->
+          <table class="hours" aria-label="Orari di apertura">
+            <tbody>
+              <tr data-day="1"><th>Lunedì</th><td>8:30 – 20:00</td></tr>
+              <tr data-day="2"><th>Martedì</th><td>8:30 – 20:00</td></tr>
+              <tr data-day="3"><th>Mercoledì</th><td>8:30 – 20:00</td></tr>
+              <tr data-day="4"><th>Giovedì</th><td>8:30 – 20:00</td></tr>
+              <tr data-day="5"><th>Venerdì</th><td>8:30 – 20:00</td></tr>
+              <tr data-day="6"><th>Sabato</th><td>8:30 – 20:00</td></tr>
+              <tr data-day="0"><th>Domenica</th><td>Chiuso</td></tr>
+            </tbody>
+          </table>
+          <p class="note">Per le farmacie di turno consulta il sito di Federfarma Roma.</p>
+        </div>
+        <div class="map">
+          <iframe
+            title="Mappa Farmacia Spadazzi Ponte Milvio"
+            src="https://maps.google.com/maps?q=Farmacia%20Spadazzi%20Ponte%20Milvio%20Roma&z=16&output=embed"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section id="contatti" class="section section-alt">
+      <div class="container">
+        <h2>Contatti</h2>
+        <div class="grid contact-grid">
+          <div class="card">
+            <h3>Vieni a trovarci</h3>
+            <p>Piazzale di Ponte Milvio 15<br>00135 Roma</p>
+          </div>
+          <div class="card">
+            <h3>Chiamaci</h3>
+            <!-- TODO: real phone number -->
+            <p><a href="tel:+390000000000">+39 06 0000 0000</a></p>
+          </div>
+          <div class="card">
+            <h3>Scrivici</h3>
+            <!-- TODO: real email / WhatsApp -->
+            <p><a href="mailto:info@farmaciaspadazzi.it">info@farmaciaspadazzi.it</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="brand">
+        <img src="assets/logo.svg" alt="" width="32" height="32">
+        <span><strong>Farmacia Spadazzi</strong></span>
+      </div>
+      <p>Piazzale di Ponte Milvio 15, 00135 Roma · P.IVA 00000000000</p>
+      <p>© <span id="year"></span> Farmacia Spadazzi</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('nav');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', false);
+    }));
+
+    const today = document.querySelector(`.hours tr[data-day="${new Date().getDay()}"]`);
+    if (today) {
+      today.classList.add('today');
+      document.getElementById('today-hours').textContent = today.querySelector('td').textContent;
+    }
+  </script>
+</body>
+</html>

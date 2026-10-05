@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Farmacia Spadazzi">
+  <!-- Mark: pharmacy cross above the arches of Ponte Milvio -->
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#11a35a"/>
+      <stop offset="1" stop-color="#076336"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#g)"/>
+  <path d="M27 7h10v10h10v10H37v10H27V27H17V17h10z" fill="#fff"/>
+  <path d="M7 43h50v4H7z" fill="#fff"/>
+  <path d="M8 48h48v9h-3a6.5 6.5 0 0 0-13 0h-3a6.5 6.5 0 0 0-13 0h-3a6.5 6.5 0 0 0-13 0H8z" fill="#fff" opacity=".9"/>
+</svg>
