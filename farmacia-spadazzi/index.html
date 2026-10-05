@@ -5,16 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Farmacia Spadazzi – Ponte Milvio, Roma</title>
   <meta name="description" content="Farmacia Spadazzi a Ponte Milvio, Roma. Farmaci, consiglio del farmacista, dermocosmesi, veterinaria e servizi per la salute in Piazzale di Ponte Milvio 15.">
+  <meta name="theme-color" content="#0b8a4a">
   <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Pharmacy",
     "name": "Farmacia Spadazzi - Ponte Milvio",
+    "logo": "assets/logo.svg",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Piazzale di Ponte Milvio 15",
@@ -27,13 +29,49 @@
   </script>
 </head>
 <body>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-pill" viewBox="0 0 24 24"><path d="M10.5 20.5a5 5 0 0 1-7-7l7-7a5 5 0 0 1 7 7z"/><path d="m7 10 7 7"/></symbol>
+      <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 5.6a5.5 5.5 0 0 0-7.8 0L12 6.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 22l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/><path d="M3.5 12h4l2-3 3 6 2-3h6"/></symbol>
+      <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></symbol>
+      <symbol id="i-paw" viewBox="0 0 24 24"><circle cx="5.5" cy="10" r="2"/><circle cx="9.5" cy="5.5" r="2"/><circle cx="14.5" cy="5.5" r="2"/><circle cx="18.5" cy="10" r="2"/><path d="M12 11c-3 0-6 4.5-6 7a2.5 2.5 0 0 0 3 2.4c1-.2 2-.6 3-.6s2 .4 3 .6A2.5 2.5 0 0 0 18 18c0-2.5-3-7-6-7z"/></symbol>
+      <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-9 16-9 0 9-3 16-9 16z"/><path d="M4 21c3-5 7-8 11-10"/></symbol>
+      <symbol id="i-baby" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9.5 15a3.5 3.5 0 0 0 5 0"/><path d="M12 3c1.5 1 1.5 3 0 3"/></symbol>
+      <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+      <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/></symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+      <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+      <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+      <symbol id="i-tooth" viewBox="0 0 24 24"><path d="M12 5.5C10 3.5 5 3 4.5 7.5c-.3 3 1.5 4.5 2 7 .5 3 1 6.5 2.5 6.5s1.5-5 3-5 1.5 5 3 5 2-3.5 2.5-6.5c.5-2.5 2.3-4 2-7C19 3 14 3.5 12 5.5z"/></symbol>
+      <symbol id="i-bone" viewBox="0 0 24 24"><path d="M17 10c.7-.7 1.7-.7 2.5-1.4a2.1 2.1 0 1 0-3-3 2.1 2.1 0 1 0-3-3c-.7.8-.7 1.8-1.4 2.5L7 10c-.7.7-1.7.7-2.5 1.4a2.1 2.1 0 1 0 3 3 2.1 2.1 0 1 0 3 3c.7-.8.7-1.8 1.4-2.5z" transform="translate(1 1)"/></symbol>
+      <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- Top info bar -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span><svg class="ic"><use href="#i-pin"/></svg> Piazzale di Ponte Milvio 15, Roma</span>
+      <!-- TODO: real phone number -->
+      <a href="tel:+390000000000"><svg class="ic"><use href="#i-phone"/></svg> 06 0000 0000</a>
+      <span class="status" data-status><span class="dot"></span><span data-status-text>Orari</span></span>
+    </div>
+  </div>
+
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#" class="brand">
-        <img src="assets/logo.svg" alt="" width="44" height="44">
-        <span>
-          <strong>Farmacia Spadazzi</strong>
-          <small>Ponte Milvio · Roma</small>
+      <a href="#" class="brand" aria-label="Farmacia Spadazzi – home">
+        <img src="assets/logo.svg" alt="" width="46" height="46">
+        <span class="brand-text">
+          <small>Farmacia</small>
+          <strong>Spadazzi</strong>
         </span>
       </a>
       <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Apri menu">
@@ -41,95 +79,239 @@
       </button>
       <nav id="nav" class="nav">
         <a href="#servizi">Servizi</a>
+        <a href="#reparti">Reparti</a>
         <a href="#chi-siamo">Chi siamo</a>
         <a href="#orari">Orari</a>
-        <a href="#contatti">Contatti</a>
-        <a href="#contatti" class="btn btn-small">Prenota</a>
+        <a href="#faq">FAQ</a>
+        <a href="#prenota" class="btn btn-small"><svg class="ic"><use href="#i-calendar"/></svg> Prenota</a>
       </nav>
     </div>
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero">
+      <div class="hero-bg" aria-hidden="true"></div>
       <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="eyebrow">La tua farmacia a Ponte Milvio</p>
-          <h1>Salute e benessere, con il consiglio di chi ti conosce.</h1>
-          <p class="lead">Farmaci, prodotti per la cura della persona, veterinaria e servizi di prevenzione, a due passi dal ponte.</p>
+        <div class="hero-text reveal">
+          <p class="pill-label"><svg class="ic"><use href="#i-heart"/></svg> La farmacia di quartiere a Ponte Milvio</p>
+          <h1>La tua salute, <em>in buone mani</em> ogni giorno.</h1>
+          <p class="lead">Farmaci, servizi di prevenzione, dermocosmesi e veterinaria, con il consiglio attento dei nostri farmacisti. A due passi dal ponte.</p>
           <div class="hero-actions">
-            <a href="#contatti" class="btn">Contattaci</a>
-            <a href="https://www.google.com/maps/dir/?api=1&destination=Farmacia+Spadazzi+Ponte+Milvio+Roma" class="btn btn-ghost" target="_blank" rel="noopener">Indicazioni stradali</a>
+            <a href="#prenota" class="btn btn-lg">Prenota un servizio <svg class="ic"><use href="#i-arrow"/></svg></a>
+            <a href="#" class="btn btn-lg btn-whatsapp" data-whatsapp><svg class="ic"><use href="#i-chat"/></svg> Scrivici su WhatsApp</a>
+          </div>
+          <ul class="trust">
+            <li><svg class="ic"><use href="#i-check"/></svg> Ricetta elettronica</li>
+            <li><svg class="ic"><use href="#i-check"/></svg> Consiglio del farmacista</li>
+            <li><svg class="ic"><use href="#i-check"/></svg> Ordini su richiesta</li>
+          </ul>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="visual-panel">
+            <svg class="scene" viewBox="0 0 400 300" aria-hidden="true">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#d9f2e4"/>
+                  <stop offset="1" stop-color="#f4fbf7"/>
+                </linearGradient>
+                <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#9fd8bb"/>
+                  <stop offset="1" stop-color="#6cc196"/>
+                </linearGradient>
+              </defs>
+              <rect width="400" height="300" fill="url(#sky)"/>
+              <circle cx="300" cy="80" r="38" fill="#ffd98a" opacity=".9"/>
+              <path d="M0 150c60-20 120-30 200-12s140 20 200 4v158H0z" fill="#c4e8d4"/>
+              <!-- Ponte Milvio -->
+              <g fill="#0b8a4a">
+                <rect x="30" y="160" width="340" height="16" rx="3"/>
+                <rect x="170" y="128" width="46" height="34" rx="2"/>
+                <path d="M182 128v-10h22v10z"/>
+                <path d="M30 176h340v40H342a34 34 0 0 0-68 0h-12a34 34 0 0 0-68 0h-12a34 34 0 0 0-68 0H102a34 34 0 0 0-68 0h-4z" opacity=".85"/>
+              </g>
+              <rect y="216" width="400" height="84" fill="url(#water)"/>
+              <path d="M40 240h50M140 256h70M260 238h60M300 270h50M70 280h40" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity=".6"/>
+              <!-- Pharmacy cross sign -->
+              <g transform="translate(176 52)">
+                <rect width="34" height="34" rx="8" fill="#fff"/>
+                <path d="M13 6h8v7h7v8h-7v7h-8v-7H6v-8h7z" fill="#11a35a"/>
+              </g>
+              <path d="M193 86v32" stroke="#0b8a4a" stroke-width="3"/>
+            </svg>
+          </div>
+
+          <div class="float-card fc-status">
+            <span class="fc-icon"><svg class="ic"><use href="#i-clock"/></svg></span>
+            <span><small>Oggi</small><strong data-today-hours>8:30 – 20:00</strong></span>
+          </div>
+          <div class="float-card fc-advice">
+            <span class="fc-icon fc-icon-coral"><svg class="ic"><use href="#i-heart"/></svg></span>
+            <span><small>Pressione e controlli</small><strong>Senza appuntamento</strong></span>
+          </div>
+          <div class="float-card fc-rx">
+            <span class="fc-icon fc-icon-amber"><svg class="ic"><use href="#i-doc"/></svg></span>
+            <span><small>Ricetta elettronica</small><strong>Basta il codice NRE</strong></span>
           </div>
         </div>
-        <div class="hero-card">
-          <img src="assets/logo.svg" alt="Logo Farmacia Spadazzi" width="96" height="96">
-          <dl>
-            <div><dt>Indirizzo</dt><dd>Piazzale di Ponte Milvio 15<br>00135 Roma</dd></div>
-            <!-- TODO: confirm opening hours with the pharmacy -->
-            <div><dt>Oggi</dt><dd id="today-hours">Vedi orari</dd></div>
-          </dl>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="container">
+        <div class="quick reveal">
+          <a href="#faq" class="quick-item">
+            <span class="q-icon"><svg class="ic"><use href="#i-doc"/></svg></span>
+            <span><strong>Ricetta elettronica</strong><small>Come funziona</small></span>
+          </a>
+          <a href="#prenota" class="quick-item">
+            <span class="q-icon q-coral"><svg class="ic"><use href="#i-calendar"/></svg></span>
+            <span><strong>Prenota un servizio</strong><small>In pochi secondi</small></span>
+          </a>
+          <a href="https://www.federfarmaroma.it/" target="_blank" rel="noopener" class="quick-item">
+            <span class="q-icon q-blue"><svg class="ic"><use href="#i-moon"/></svg></span>
+            <span><strong>Farmacie di turno</strong><small>Notte e festivi</small></span>
+          </a>
+          <a href="https://www.google.com/maps/dir/?api=1&destination=Farmacia+Spadazzi+Ponte+Milvio+Roma" target="_blank" rel="noopener" class="quick-item">
+            <span class="q-icon q-amber"><svg class="ic"><use href="#i-pin"/></svg></span>
+            <span><strong>Come arrivare</strong><small>Indicazioni stradali</small></span>
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- Services -->
     <section id="servizi" class="section">
       <div class="container">
-        <h2>I nostri servizi</h2>
-        <p class="section-lead">Tutto quello che ti serve per la salute della tua famiglia, in un unico posto.</p>
-        <div class="grid">
-          <article class="card">
-            <div class="icon" aria-hidden="true">💊</div>
+        <div class="section-head reveal">
+          <p class="kicker">Servizi</p>
+          <h2>Ci prendiamo cura di te, a 360°</h2>
+          <p class="section-lead">Dalla ricetta al consiglio quotidiano: tutto quello che serve alla salute della tua famiglia, in un unico posto.</p>
+        </div>
+        <!-- TODO: confirm the list of services with the pharmacy -->
+        <div class="services">
+          <article class="service reveal" style="--c:#0b8a4a;--cs:#e3f4ea">
+            <span class="s-icon"><svg class="ic"><use href="#i-pill"/></svg></span>
             <h3>Farmaci e ricette</h3>
-            <p>Farmaci da banco e con ricetta, anche elettronica. Ordini rapidi per i prodotti non disponibili.</p>
+            <p>Farmaci da banco e con ricetta, anche elettronica. Ordiniamo per te i prodotti non disponibili.</p>
           </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">🩺</div>
-            <h3>Prevenzione</h3>
-            <p>Misurazione della pressione e controlli di base, con il consiglio del farmacista.</p>
+          <article class="service reveal" style="--c:#e0584a;--cs:#fdeceb">
+            <span class="s-icon"><svg class="ic"><use href="#i-heart"/></svg></span>
+            <h3>Prevenzione e controlli</h3>
+            <p>Misurazione della pressione e controlli di base, con il supporto del farmacista.</p>
           </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">✨</div>
-            <h3>Dermocosmesi e bellezza</h3>
-            <p>Selezione di marchi per la cura della pelle e consulenze personalizzate.</p>
+          <article class="service reveal" style="--c:#c2698f;--cs:#f9eaf1">
+            <span class="s-icon"><svg class="ic"><use href="#i-sparkle"/></svg></span>
+            <h3>Dermocosmesi</h3>
+            <p>Le migliori linee per la cura della pelle, con consulenze personalizzate.</p>
           </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">🐾</div>
+          <article class="service reveal" style="--c:#c98a12;--cs:#fdf3df">
+            <span class="s-icon"><svg class="ic"><use href="#i-paw"/></svg></span>
             <h3>Veterinaria</h3>
-            <p>Farmaci e prodotti per la salute dei tuoi animali domestici.</p>
+            <p>Farmaci, antiparassitari e prodotti per la salute dei tuoi animali.</p>
           </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">🌿</div>
+          <article class="service reveal" style="--c:#4f8a2b;--cs:#ecf5e3">
+            <span class="s-icon"><svg class="ic"><use href="#i-leaf"/></svg></span>
             <h3>Naturale e omeopatia</h3>
-            <p>Integratori, fitoterapia e rimedi naturali scelti con cura.</p>
+            <p>Integratori, fitoterapia e rimedi naturali selezionati con cura.</p>
           </article>
-          <article class="card">
-            <div class="icon" aria-hidden="true">👶</div>
+          <article class="service reveal" style="--c:#2f7fc1;--cs:#e6f1fa">
+            <span class="s-icon"><svg class="ic"><use href="#i-baby"/></svg></span>
             <h3>Mamma e bambino</h3>
-            <p>Alimentazione, igiene e prodotti per la prima infanzia.</p>
+            <p>Alimentazione, igiene e tutto il necessario per la prima infanzia.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="chi-siamo" class="section section-alt">
-      <div class="container split">
-        <div>
-          <h2>Chi siamo</h2>
-          <p>La Farmacia Spadazzi è un punto di riferimento per il quartiere di Ponte Milvio. Il nostro team di farmacisti ti accoglie ogni giorno con professionalità e attenzione, per aiutarti a scegliere il prodotto giusto e prenderti cura della tua salute.</p>
-          <p>Chiedici un consiglio: siamo qui per ascoltarti.</p>
+    <!-- Booking band -->
+    <section id="prenota" class="booking">
+      <div class="container booking-inner">
+        <div class="booking-text reveal">
+          <p class="kicker kicker-light">Prenotazioni</p>
+          <h2>Prenota un servizio o un prodotto</h2>
+          <p>Compila il modulo: si aprirà WhatsApp con il messaggio già pronto. Ti risponderemo il prima possibile per confermare.</p>
+          <ul class="booking-points">
+            <li><svg class="ic"><use href="#i-check"/></svg> Nessuna registrazione</li>
+            <li><svg class="ic"><use href="#i-check"/></svg> Ritiro in farmacia</li>
+            <li><svg class="ic"><use href="#i-check"/></svg> Risposta diretta dal farmacista</li>
+          </ul>
         </div>
-        <ul class="highlights">
-          <li><strong>Consiglio esperto</strong><span>Farmacisti sempre a disposizione</span></li>
-          <li><strong>Nel cuore di Ponte Milvio</strong><span>Facile da raggiungere a piedi e con i mezzi</span></li>
-          <li><strong>Ampio assortimento</strong><span>Farmaci, cosmesi, veterinaria e altro</span></li>
-        </ul>
+        <form class="booking-form reveal" id="booking-form">
+          <label>Nome e cognome
+            <input name="name" required autocomplete="name" placeholder="Mario Rossi">
+          </label>
+          <label>Cosa ti serve?
+            <select name="service" required>
+              <option value="">Scegli…</option>
+              <option>Misurazione della pressione</option>
+              <option>Prenotazione di un farmaco</option>
+              <option>Consulenza dermocosmetica</option>
+              <option>Prodotti veterinari</option>
+              <option>Altro</option>
+            </select>
+          </label>
+          <label>Giorno preferito
+            <input type="date" name="date">
+          </label>
+          <label class="full">Note (facoltative)
+            <textarea name="notes" rows="3" placeholder="Es. nome del prodotto, orario preferito…"></textarea>
+          </label>
+          <button class="btn btn-lg btn-whatsapp full" type="submit"><svg class="ic"><use href="#i-chat"/></svg> Invia su WhatsApp</button>
+          <p class="form-note full">I tuoi dati vengono usati solo per rispondere alla tua richiesta.</p>
+        </form>
       </div>
     </section>
 
+    <!-- Departments -->
+    <section id="reparti" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <p class="kicker">Reparti</p>
+          <h2>Scopri i nostri reparti</h2>
+          <p class="section-lead">Un assortimento ampio e scelto con cura. Non trovi quello che cerchi? Lo ordiniamo per te.</p>
+        </div>
+        <div class="depts">
+          <a class="dept reveal d-green" href="#prenota"><svg class="ic"><use href="#i-sparkle"/></svg><strong>Viso e corpo</strong><span>Dermocosmesi e solari</span></a>
+          <a class="dept reveal d-blue" href="#prenota"><svg class="ic"><use href="#i-baby"/></svg><strong>Infanzia</strong><span>Latte, pappe e igiene</span></a>
+          <a class="dept reveal d-amber" href="#prenota"><svg class="ic"><use href="#i-leaf"/></svg><strong>Integratori</strong><span>Vitamine e benessere</span></a>
+          <a class="dept reveal d-coral" href="#prenota"><svg class="ic"><use href="#i-paw"/></svg><strong>Animali</strong><span>Cani, gatti e altri amici</span></a>
+          <a class="dept reveal d-teal" href="#prenota"><svg class="ic"><use href="#i-tooth"/></svg><strong>Igiene orale</strong><span>Spazzolini e cura dei denti</span></a>
+          <a class="dept reveal d-plum" href="#prenota"><svg class="ic"><use href="#i-bone"/></svg><strong>Ortopedia</strong><span>Supporti e calze mediche</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="chi-siamo" class="section section-alt">
+      <div class="container about">
+        <div class="about-visual reveal" aria-hidden="true">
+          <div class="about-card">
+            <img src="assets/logo.svg" alt="" width="88" height="88">
+            <p class="about-quote">“Ogni persona che entra merita tempo, ascolto e la risposta giusta.”</p>
+            <p class="about-sign">Il team della Farmacia Spadazzi</p>
+          </div>
+          <div class="about-blob"></div>
+        </div>
+        <div class="reveal">
+          <p class="kicker">Chi siamo</p>
+          <h2>Un punto di riferimento per Ponte Milvio</h2>
+          <p>La Farmacia Spadazzi accompagna ogni giorno le famiglie del quartiere. Il nostro team di farmacisti ti accoglie con professionalità e attenzione, per aiutarti a scegliere il prodotto giusto e prenderti cura della tua salute.</p>
+          <div class="values">
+            <div class="value"><span class="v-icon"><svg class="ic"><use href="#i-chat"/></svg></span><div><strong>Ascolto</strong><p>Ti dedichiamo il tempo che serve, senza fretta.</p></div></div>
+            <div class="value"><span class="v-icon"><svg class="ic"><use href="#i-shield"/></svg></span><div><strong>Competenza</strong><p>Farmacisti qualificati e sempre aggiornati.</p></div></div>
+            <div class="value"><span class="v-icon"><svg class="ic"><use href="#i-bag"/></svg></span><div><strong>Assortimento</strong><p>Quello che non c'è, lo ordiniamo per te.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hours + map -->
     <section id="orari" class="section">
-      <div class="container split">
-        <div>
-          <h2>Orari di apertura</h2>
+      <div class="container hours-wrap">
+        <div class="hours-card reveal">
+          <p class="kicker">Orari</p>
+          <h2>Quando trovarci</h2>
           <!-- TODO: placeholder hours, replace with the pharmacy's real schedule -->
           <table class="hours" aria-label="Orari di apertura">
             <tbody>
@@ -142,54 +324,113 @@
               <tr data-day="0"><th>Domenica</th><td>Chiuso</td></tr>
             </tbody>
           </table>
-          <p class="note">Per le farmacie di turno consulta il sito di Federfarma Roma.</p>
+          <a class="turno" href="https://www.federfarmaroma.it/" target="_blank" rel="noopener">
+            <svg class="ic"><use href="#i-moon"/></svg>
+            <span><strong>Serve una farmacia di notte?</strong> Consulta le farmacie di turno a Roma</span>
+          </a>
         </div>
-        <div class="map">
+        <div class="map reveal">
           <iframe
             title="Mappa Farmacia Spadazzi Ponte Milvio"
             src="https://maps.google.com/maps?q=Farmacia%20Spadazzi%20Ponte%20Milvio%20Roma&z=16&output=embed"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="map-card">
+            <svg class="ic"><use href="#i-pin"/></svg>
+            <div><strong>Piazzale di Ponte Milvio 15</strong><span>00135 Roma</span></div>
+            <a class="btn btn-small" href="https://www.google.com/maps/dir/?api=1&destination=Farmacia+Spadazzi+Ponte+Milvio+Roma" target="_blank" rel="noopener">Indicazioni</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contatti" class="section section-alt">
-      <div class="container">
-        <h2>Contatti</h2>
-        <div class="grid contact-grid">
-          <div class="card">
-            <h3>Vieni a trovarci</h3>
-            <p>Piazzale di Ponte Milvio 15<br>00135 Roma</p>
-          </div>
-          <div class="card">
-            <h3>Chiamaci</h3>
-            <!-- TODO: real phone number -->
-            <p><a href="tel:+390000000000">+39 06 0000 0000</a></p>
-          </div>
-          <div class="card">
-            <h3>Scrivici</h3>
-            <!-- TODO: real email / WhatsApp -->
-            <p><a href="mailto:info@farmaciaspadazzi.it">info@farmaciaspadazzi.it</a></p>
-          </div>
+    <!-- FAQ -->
+    <section id="faq" class="section section-alt">
+      <div class="container faq-wrap">
+        <div class="section-head reveal">
+          <p class="kicker">Domande frequenti</p>
+          <h2>Hai una domanda?</h2>
+          <p class="section-lead">Le risposte alle domande più comuni. Per tutto il resto, chiamaci o scrivici.</p>
+          <a href="#" class="btn btn-whatsapp" data-whatsapp><svg class="ic"><use href="#i-chat"/></svg> Chiedi al farmacista</a>
         </div>
+        <div class="faq reveal">
+          <details open>
+            <summary>Come funziona la ricetta elettronica?</summary>
+            <p>Ti basta mostrarci il codice NRE (il numero di ricetta elettronica) e la tessera sanitaria, anche dal telefono. Al resto pensiamo noi.</p>
+          </details>
+          <details>
+            <summary>Posso prenotare un farmaco che non avete in negozio?</summary>
+            <p>Sì. Scrivici o chiamaci: ordiniamo il prodotto e ti avvisiamo quando è pronto per il ritiro.</p>
+          </details>
+          <details>
+            <summary>Serve un appuntamento per misurare la pressione?</summary>
+            <p>Puoi passare in farmacia durante l'orario di apertura. Se preferisci, prenota dal modulo qui sopra.</p>
+          </details>
+          <details>
+            <summary>Dove trovo una farmacia aperta di notte o nei festivi?</summary>
+            <p>Puoi consultare l'elenco aggiornato delle farmacie di turno a Roma sul sito di Federfarma Roma.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Review CTA -->
+    <section class="section review-cta">
+      <div class="container review-inner reveal">
+        <div class="stars" aria-hidden="true">
+          <svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg><svg class="ic"><use href="#i-star"/></svg>
+        </div>
+        <h2>Ti sei trovato bene da noi?</h2>
+        <p>Lascia una recensione su Google: aiuta altre persone del quartiere a conoscerci.</p>
+        <a class="btn btn-lg" href="https://www.google.com/maps/search/?api=1&query=Farmacia+Spadazzi+Ponte+Milvio" target="_blank" rel="noopener">Lascia una recensione</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="brand">
-        <img src="assets/logo.svg" alt="" width="32" height="32">
-        <span><strong>Farmacia Spadazzi</strong></span>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand brand-light">
+          <img src="assets/logo.svg" alt="" width="42" height="42">
+          <span class="brand-text"><small>Farmacia</small><strong>Spadazzi</strong></span>
+        </div>
+        <p>La farmacia di quartiere a Ponte Milvio, Roma.</p>
       </div>
-      <p>Piazzale di Ponte Milvio 15, 00135 Roma · P.IVA 00000000000</p>
-      <p>© <span id="year"></span> Farmacia Spadazzi</p>
+      <div>
+        <h4>Contatti</h4>
+        <!-- TODO: real phone / email -->
+        <p><a href="tel:+390000000000">06 0000 0000</a><br><a href="mailto:info@farmaciaspadazzi.it">info@farmaciaspadazzi.it</a></p>
+      </div>
+      <div>
+        <h4>Indirizzo</h4>
+        <p>Piazzale di Ponte Milvio 15<br>00135 Roma</p>
+      </div>
+      <div>
+        <h4>Link utili</h4>
+        <p><a href="#servizi">Servizi</a><br><a href="#orari">Orari</a><br><a href="https://www.federfarmaroma.it/" target="_blank" rel="noopener">Farmacie di turno</a></p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> Farmacia Spadazzi · P.IVA 00000000000</p>
+      <p><a href="#">Privacy</a> · <a href="#">Cookie</a></p>
     </div>
   </footer>
 
+  <a href="#" class="wa-float" data-whatsapp aria-label="Scrivici su WhatsApp"><svg class="ic"><use href="#i-chat"/></svg></a>
+
   <script>
+    // TODO: real WhatsApp number (international format, digits only)
+    const WHATSAPP = '390000000000';
+    const waLink = text => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`;
+
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    document.querySelectorAll('[data-whatsapp]').forEach(a => {
+      a.href = waLink('Buongiorno, vorrei un\'informazione.');
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+
+    // Mobile nav
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.getElementById('nav');
     toggle.addEventListener('click', () => {
@@ -201,11 +442,38 @@
       toggle.setAttribute('aria-expanded', false);
     }));
 
-    const today = document.querySelector(`.hours tr[data-day="${new Date().getDay()}"]`);
-    if (today) {
-      today.classList.add('today');
-      document.getElementById('today-hours').textContent = today.querySelector('td').textContent;
-    }
+    // Today's hours + open/closed status
+    const now = new Date();
+    const row = document.querySelector(`.hours tr[data-day="${now.getDay()}"]`);
+    const hoursText = row.querySelector('td').textContent;
+    row.classList.add('today');
+    document.querySelectorAll('[data-today-hours]').forEach(el => el.textContent = hoursText);
+    const m = hoursText.match(/(\d+):(\d+)\s*–\s*(\d+):(\d+)/);
+    const mins = now.getHours() * 60 + now.getMinutes();
+    const isOpen = m && mins >= +m[1] * 60 + +m[2] && mins < +m[3] * 60 + +m[4];
+    const status = document.querySelector('[data-status]');
+    status.classList.toggle('closed', !isOpen);
+    status.querySelector('[data-status-text]').textContent = isOpen ? `Aperto ora · fino alle ${m[3]}:${m[4]}` : 'Chiuso ora';
+
+    // Booking form -> WhatsApp
+    document.getElementById('booking-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const f = new FormData(e.target);
+      const lines = [
+        'Buongiorno, vorrei prenotare:',
+        `• ${f.get('service')}`,
+        f.get('date') && `• Giorno: ${new Date(f.get('date')).toLocaleDateString('it-IT')}`,
+        f.get('notes') && `• Note: ${f.get('notes')}`,
+        `Nome: ${f.get('name')}`,
+      ].filter(Boolean);
+      window.open(waLink(lines.join('\n')), '_blank', 'noopener');
+    });
+
+    // Reveal on scroll
+    const io = 'IntersectionObserver' in window && new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
   </script>
 </body>
 </html>
