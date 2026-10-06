@@ -1,0 +1,317 @@
+[
+  {
+    "slug": "farmacia-caluori",
+    "nome": "Farmacia Caluori",
+    "titolari": "Dott.sse Lucia e Carla Caluori",
+    "ragione_sociale": "Caluori S.n.c. di Lucia e Carla Caluori",
+    "piva_ministero": "05908751000",
+    "cod_ministero": "9168",
+    "indirizzo": "Piazzale delle Province, 8/A",
+    "cap": "00162",
+    "quartiere": "Nomentano",
+    "zona_seo": "Piazza Bologna e Nomentano",
+    "municipio": "II",
+    "telefono": "06 44244761",
+    "email": null,
+    "whatsapp": null,
+    "lat": 41.9096282,
+    "lon": 12.5214626,
+    "dal": "1985",
+    "orari": [
+      [
+        "Lunedì",
+        "08:00 - 20:00"
+      ],
+      [
+        "Martedì",
+        "08:00 - 20:00"
+      ],
+      [
+        "Mercoledì",
+        "08:00 - 20:00"
+      ],
+      [
+        "Giovedì",
+        "08:00 - 20:00"
+      ],
+      [
+        "Venerdì",
+        "08:00 - 20:00"
+      ],
+      [
+        "Sabato",
+        "08:30 - 13:00 / 16:00 - 20:00"
+      ],
+      [
+        "Domenica",
+        "Chiuso"
+      ]
+    ],
+    "servizi_evidenza": [
+      "ecg",
+      "holter-cardiaco",
+      "holter-pressorio",
+      "foratura-lobi"
+    ],
+    "servizi": [
+      "ecg",
+      "holter-cardiaco",
+      "holter-pressorio",
+      "cup",
+      "spirometria",
+      "autoanalisi",
+      "intolleranze",
+      "pressione",
+      "tampone",
+      "streptococco",
+      "colon-retto",
+      "infezioni-urinarie",
+      "foratura-lobi"
+    ],
+    "reparti": [
+      "dermocosmesi",
+      "omeopatia",
+      "veterinaria",
+      "senza-glutine",
+      "integratori",
+      "infanzia",
+      "galenica"
+    ],
+    "servizi_da_confermare": [
+      "intolleranze",
+      "foratura-lobi"
+    ],
+    "fonti_servizi": "farmaciediturno.org (servizi dichiarati), directory web (foratura lobi, intolleranze, omeopatia, veterinaria, celiachia)",
+    "tema": {
+      "variante": "split",
+      "primario": "#1d2f4d",
+      "primario_scuro": "#121f35",
+      "accento": "#e2572f",
+      "accento_testo": "#b9401c",
+      "sfondo": "#fbf6ef",
+      "superficie": "#ffffff",
+      "tenue": "#f1e7da",
+      "testo": "#1f2430",
+      "testo_soft": "#5b6170",
+      "font_titoli": "Fraunces",
+      "pesi_titoli": [
+        600,
+        700
+      ],
+      "font_testo": "Inter",
+      "pesi_testo": [
+        400,
+        600
+      ],
+      "raggio": "18px"
+    },
+    "claim": "La farmacia di quartiere tra Piazza Bologna e il Nomentano, dal 1985."
+  },
+  {
+    "slug": "farmacia-gerardini",
+    "nome": "Farmacia Gerardini",
+    "titolari": "Dott.ssa Renata Gerardini",
+    "ragione_sociale": "Gerardini Renata",
+    "piva_ministero": "07642400589",
+    "cod_ministero": "9716",
+    "indirizzo": "Largo Damiano Chiesa, 7/A",
+    "cap": "00136",
+    "quartiere": "Balduina",
+    "zona_seo": "Balduina e Monte Mario",
+    "municipio": "XIV",
+    "telefono": "06 35497546",
+    "email": "farm.gerardini@tiscali.it",
+    "whatsapp": null,
+    "lat": 41.9194636,
+    "lon": 12.4368017,
+    "dal": null,
+    "orari": [
+      [
+        "Lunedì",
+        "08:30 - 13:00 / 16:00 - 19:30"
+      ],
+      [
+        "Martedì",
+        "08:30 - 13:00 / 16:00 - 19:30"
+      ],
+      [
+        "Mercoledì",
+        "08:30 - 13:00 / 16:00 - 19:30"
+      ],
+      [
+        "Giovedì",
+        "08:30 - 13:00 / 16:00 - 19:30"
+      ],
+      [
+        "Venerdì",
+        "08:30 - 13:00 / 16:00 - 19:30"
+      ],
+      [
+        "Sabato",
+        "08:30 - 13:00"
+      ],
+      [
+        "Domenica",
+        "Chiuso"
+      ]
+    ],
+    "servizi_evidenza": [
+      "ecg",
+      "holter-pressorio",
+      "cup",
+      "vaccino-influenza"
+    ],
+    "servizi": [
+      "ecg",
+      "holter-cardiaco",
+      "holter-pressorio",
+      "cup",
+      "vaccino-influenza",
+      "aderenza",
+      "tampone",
+      "streptococco",
+      "colon-retto",
+      "pressione",
+      "noleggio-bilance"
+    ],
+    "reparti": [
+      "omeopatia",
+      "erboristeria",
+      "dermocosmesi",
+      "articoli-sanitari",
+      "veterinaria",
+      "integratori"
+    ],
+    "servizi_da_confermare": [
+      "noleggio-bilance"
+    ],
+    "fonti_servizi": "farmaciediturno.org (servizi dichiarati), directory web (omeopatia, erboristeria, cosmesi, articoli sanitari, veterinaria, noleggio bilance)",
+    "tema": {
+      "variante": "centrata",
+      "primario": "#4a2d5c",
+      "primario_scuro": "#2f1b3c",
+      "accento": "#d4952a",
+      "accento_testo": "#8f5f0e",
+      "sfondo": "#fbf8f3",
+      "superficie": "#ffffff",
+      "tenue": "#efe6f1",
+      "testo": "#24202a",
+      "testo_soft": "#625b6b",
+      "font_titoli": "DM Serif Display",
+      "pesi_titoli": [
+        400
+      ],
+      "font_testo": "DM Sans",
+      "pesi_testo": [
+        400,
+        600
+      ],
+      "raggio": "999px"
+    },
+    "claim": "Telemedicina, prenotazioni CUP e consiglio di fiducia, nel cuore della Balduina."
+  },
+  {
+    "slug": "farmacia-casal-del-marmo",
+    "nome": "Farmacia Casal del Marmo",
+    "titolari": "Dott. Andrea Cerullo",
+    "ragione_sociale": "Farmacia Casal del Marmo",
+    "piva_ministero": "14076491001",
+    "cod_ministero": "19872",
+    "indirizzo": "Via di Casal del Marmo, 201/203/205",
+    "cap": "00135",
+    "quartiere": "Casal del Marmo",
+    "zona_seo": "Casal del Marmo, Palmarola e Ottavia",
+    "municipio": "XIV",
+    "telefono": "06 30816169",
+    "email": null,
+    "whatsapp": null,
+    "lat": 41.9583656,
+    "lon": 12.4120573,
+    "dal": null,
+    "orari": [
+      [
+        "Lunedì",
+        "08:30 - 20:30"
+      ],
+      [
+        "Martedì",
+        "08:30 - 20:30"
+      ],
+      [
+        "Mercoledì",
+        "08:30 - 20:30"
+      ],
+      [
+        "Giovedì",
+        "08:30 - 20:30"
+      ],
+      [
+        "Venerdì",
+        "08:00 - 20:30"
+      ],
+      [
+        "Sabato",
+        "08:30 - 20:30"
+      ],
+      [
+        "Domenica",
+        "Chiuso"
+      ]
+    ],
+    "servizi_evidenza": [
+      "pressione",
+      "tampone",
+      "galenica-servizio",
+      "consegna"
+    ],
+    "servizi": [
+      "pressione",
+      "tampone",
+      "galenica-servizio",
+      "consegna",
+      "ecg",
+      "holter-cardiaco",
+      "cup"
+    ],
+    "reparti": [
+      "senza-glutine",
+      "veterinaria",
+      "dermocosmesi",
+      "omeopatia",
+      "galenica",
+      "integratori"
+    ],
+    "servizi_da_confermare": [
+      "consegna",
+      "ecg",
+      "holter-cardiaco",
+      "cup"
+    ],
+    "fonti_servizi": "farmaciediturno.org (tampone), directory web (pressione, veterinaria, galenica, senza glutine, cosmetica, omeopatia). ECG/holter/CUP risultano sulla scheda della sede di Via Gaverina 10 (stessa titolarità): da confermare",
+    "tema": {
+      "variante": "fascia",
+      "primario": "#0b5a87",
+      "primario_scuro": "#073f60",
+      "accento": "#f2b134",
+      "accento_testo": "#8a5c00",
+      "sfondo": "#f3f8fb",
+      "superficie": "#ffffff",
+      "tenue": "#e1eef6",
+      "testo": "#13222e",
+      "testo_soft": "#4f6372",
+      "font_titoli": "Outfit",
+      "pesi_titoli": [
+        500,
+        700
+      ],
+      "font_testo": "Nunito Sans",
+      "pesi_testo": [
+        400,
+        700
+      ],
+      "raggio": "10px"
+    },
+    "claim": "Dal lunedì al sabato aperti fino alle 20:30, con orario continuato.",
+    "nota_readme": "- [ ] Nell'open data del Ministero risulta attiva anche una sede in **Via Gaverina 10** (cod. 9117) con la stessa titolarità: chiarire se esistono due farmacie o se è un trasferimento non ancora aggiornato.\n"
+  }
+]

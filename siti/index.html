@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Siti demo farmacie Roma Nord</title>
+<style>
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:#f4f4f2;color:#1d1f24}
+header{padding:2.5rem 16px 1rem;max-width:1200px;margin:auto}
+h1{margin:0 0 .3rem;font-size:clamp(1.7rem,4vw,2.4rem)}
+header p{margin:0;color:#5a5f6a;max-width:46em}
+main{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.4rem;max-width:1200px;margin:1.5rem auto 3rem;padding:0 16px}
+.sito{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 10px 30px -18px rgba(0,0,0,.35);border-top:6px solid var(--p)}
+.anteprima{height:300px;overflow:hidden;position:relative;background:var(--s)}
+.anteprima iframe{width:1280px;height:1000px;border:0;transform:scale(.3);transform-origin:0 0;pointer-events:none;position:absolute;left:0;top:0}
+.info{padding:1rem 1.2rem 1.3rem}
+.info h2{margin:0 0 .3rem;font-size:1.25rem;color:var(--p)}
+.info p{margin:.3rem 0;color:#4a4f5a;font-size:.93rem}
+.pal span{display:inline-block;width:16px;height:16px;border-radius:50%;vertical-align:-3px;border:1px solid rgba(0,0,0,.12)}
+a{color:var(--p,#1d2f4d);font-weight:600}
+@media (min-width:1100px){.anteprima iframe{transform:scale(.29)}}
+</style></head><body>
+<header><h1>Siti demo – farmacie di Roma Nord</h1>
+<p>Prova della Fase 2: 3 siti costruiti sulla struttura del sito della Farmacia Spadazzi, ognuno con un'identità visiva propria e i dati reali raccolti nella Fase 1 (06/10/2026). Le parti gialle sono da confermare con il titolare.</p></header>
+<main><article class="sito" style="--p:#1d2f4d;--a:#e2572f;--s:#fbf6ef">
+  <div class="anteprima"><iframe src="farmacia-caluori/index.html" title="Anteprima Farmacia Caluori" loading="lazy" tabindex="-1"></iframe></div>
+  <div class="info"><h2>Farmacia Caluori</h2>
+  <p>Piazzale delle Province, 8/A · Nomentano, Municipio II</p>
+  <p class="pal"><span style="background:#1d2f4d"></span><span style="background:#e2572f"></span><span style="background:#fbf6ef"></span> Fraunces + Inter · hero “split”</p>
+  <p><a class="apri" href="farmacia-caluori/index.html">Apri il sito</a> · <a href="farmacia-caluori/README.md">Dati e punti da confermare</a></p></div>
+</article><article class="sito" style="--p:#4a2d5c;--a:#d4952a;--s:#fbf8f3">
+  <div class="anteprima"><iframe src="farmacia-gerardini/index.html" title="Anteprima Farmacia Gerardini" loading="lazy" tabindex="-1"></iframe></div>
+  <div class="info"><h2>Farmacia Gerardini</h2>
+  <p>Largo Damiano Chiesa, 7/A · Balduina, Municipio XIV</p>
+  <p class="pal"><span style="background:#4a2d5c"></span><span style="background:#d4952a"></span><span style="background:#fbf8f3"></span> DM Serif Display + DM Sans · hero “centrata”</p>
+  <p><a class="apri" href="farmacia-gerardini/index.html">Apri il sito</a> · <a href="farmacia-gerardini/README.md">Dati e punti da confermare</a></p></div>
+</article><article class="sito" style="--p:#0b5a87;--a:#f2b134;--s:#f3f8fb">
+  <div class="anteprima"><iframe src="farmacia-casal-del-marmo/index.html" title="Anteprima Farmacia Casal del Marmo" loading="lazy" tabindex="-1"></iframe></div>
+  <div class="info"><h2>Farmacia Casal del Marmo</h2>
+  <p>Via di Casal del Marmo, 201/203/205 · Casal del Marmo, Municipio XIV</p>
+  <p class="pal"><span style="background:#0b5a87"></span><span style="background:#f2b134"></span><span style="background:#f3f8fb"></span> Outfit + Nunito Sans · hero “fascia”</p>
+  <p><a class="apri" href="farmacia-casal-del-marmo/index.html">Apri il sito</a> · <a href="farmacia-casal-del-marmo/README.md">Dati e punti da confermare</a></p></div>
+</article></main>
+</body></html>
