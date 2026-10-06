@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -61,7 +62,7 @@
       <span><svg class="ic"><use href="#i-pin"/></svg> Piazzale di Ponte Milvio 15, Roma</span>
       <!-- TODO: real phone number -->
       <a href="tel:+390000000000"><svg class="ic"><use href="#i-phone"/></svg> 06 0000 0000</a>
-      <span class="status" data-status><span class="dot"></span><span data-status-text>Orari</span></span>
+      <span class="status" data-status><span class="dot"></span><span data-status-text>Lun–Sab 8:30–20:00</span></span>
     </div>
   </div>
 
@@ -99,7 +100,7 @@
           <p class="lead">Farmaci, servizi di prevenzione, dermocosmesi e veterinaria, con il consiglio attento dei nostri farmacisti. A due passi dal ponte.</p>
           <div class="hero-actions">
             <a href="#prenota" class="btn btn-lg">Prenota un servizio <svg class="ic"><use href="#i-arrow"/></svg></a>
-            <a href="#" class="btn btn-lg btn-whatsapp" data-whatsapp><svg class="ic"><use href="#i-chat"/></svg> Scrivici su WhatsApp</a>
+            <a href="https://wa.me/390000000000?text=Buongiorno%2C%20vorrei%20un%27informazione." target="_blank" rel="noopener" class="btn btn-lg btn-whatsapp" data-whatsapp><svg class="ic"><use href="#i-chat"/></svg> Scrivici su WhatsApp</a>
           </div>
           <ul class="trust">
             <li><svg class="ic"><use href="#i-check"/></svg> Ricetta elettronica</li>
@@ -350,7 +351,7 @@
           <p class="kicker">Domande frequenti</p>
           <h2>Hai una domanda?</h2>
           <p class="section-lead">Le risposte alle domande più comuni. Per tutto il resto, chiamaci o scrivici.</p>
-          <a href="#" class="btn btn-whatsapp" data-whatsapp><svg class="ic"><use href="#i-chat"/></svg> Chiedi al farmacista</a>
+          <a href="https://wa.me/390000000000?text=Buongiorno%2C%20vorrei%20un%27informazione." target="_blank" rel="noopener" class="btn btn-whatsapp" data-whatsapp><svg class="ic"><use href="#i-chat"/></svg> Chiedi al farmacista</a>
         </div>
         <div class="faq reveal">
           <details open>
@@ -415,7 +416,7 @@
     </div>
   </footer>
 
-  <a href="#" class="wa-float" data-whatsapp aria-label="Scrivici su WhatsApp"><svg class="ic"><use href="#i-chat"/></svg></a>
+  <a href="https://wa.me/390000000000?text=Buongiorno%2C%20vorrei%20un%27informazione." target="_blank" rel="noopener" class="wa-float" data-whatsapp aria-label="Scrivici su WhatsApp"><svg class="ic"><use href="#i-chat"/></svg></a>
 
   <script>
     // TODO: real WhatsApp number (international format, digits only)
@@ -474,6 +475,8 @@
       entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io ? io.observe(el) : el.classList.add('in'));
+    // Safety net: never leave content hidden if the observer doesn't fire (e.g. in embedded previews)
+    setTimeout(() => document.querySelectorAll('.reveal').forEach(el => el.classList.add('in')), 1500);
   </script>
 </body>
 </html>

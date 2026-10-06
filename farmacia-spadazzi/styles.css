@@ -332,10 +332,10 @@ h3 { font-size: 1.25rem; font-weight: 600; }
 .wa-float:hover { transform: scale(1.08); }
 
 /* Reveal animation */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
-.reveal.in { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
   .float-card, .status .dot { animation: none; }
   html { scroll-behavior: auto; }
 }
