@@ -75,9 +75,11 @@
           <strong>Spadazzi</strong>
         </span>
       </a>
-      <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="Apri menu">
+      <!-- CSS-only menu toggle: works even where JavaScript is blocked -->
+      <input type="checkbox" id="nav-check" class="nav-check" aria-label="Apri menu" aria-controls="nav">
+      <label for="nav-check" class="nav-toggle" aria-hidden="true">
         <span></span><span></span><span></span>
-      </button>
+      </label>
       <nav id="nav" class="nav">
         <a href="#servizi">Servizi</a>
         <a href="#reparti">Reparti</a>
@@ -432,16 +434,8 @@
     });
 
     // Mobile nav
-    const toggle = document.querySelector('.nav-toggle');
-    const nav = document.getElementById('nav');
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', false);
-    }));
+    const navCheck = document.getElementById('nav-check');
+    document.querySelectorAll('#nav a').forEach(a => a.addEventListener('click', () => { navCheck.checked = false; }));
 
     // Today's hours + open/closed status
     const now = new Date();
