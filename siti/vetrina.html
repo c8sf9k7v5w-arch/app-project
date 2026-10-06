@@ -1,0 +1,74 @@
+<title>Farmacie Roma Nord</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@700&family=Nunito+Sans:wght@400;700&display=swap">
+<style>
+/* Layout: intestazione breve + griglia di tre anteprime, ognuna con i colori del proprio sito */
+:root{--bg:#f3f2ee;--surface:#ffffff;--fg:#1d1f24;--muted:#5a5f6a;--line:#e2e0d9;--accent:#1d4e6b;
+--f-display:"Outfit",system-ui,sans-serif;--f-body:"Nunito Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171b;--surface:#1f2228;--fg:#eceae4;--muted:#a3a7b0;--line:#30343c;--accent:#8cc3e6;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#15171b;--surface:#1f2228;--fg:#eceae4;--muted:#a3a7b0;--line:#30343c;--accent:#8cc3e6;color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.55;padding-inline:16px;padding-block:0 3rem}
+.wrap{max-width:1180px;margin:0 auto}
+header{padding-block:2.2rem 1.2rem;display:grid;gap:.5rem}
+.eyebrow{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(1.8rem,4.5vw,2.6rem);line-height:1.1;margin:0;text-wrap:balance}
+header p{margin:0;color:var(--muted);max-width:62ch}
+.legenda{display:inline-flex;align-items:center;gap:.4rem}
+.legenda i{font-style:normal;font-size:.72rem;font-weight:700;background:#fff3c4;color:#6b4e00;border:1px dashed #c9a227;border-radius:5px;padding:0 .4em}
+main{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:1.2rem;margin-top:1rem}
+.sito{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.anteprima{display:block;height:290px;overflow:hidden;position:relative;background:var(--s);border-bottom:5px solid var(--p)}
+.anteprima iframe{width:1280px;height:980px;border:0;transform:scale(.3);transform-origin:0 0;pointer-events:none;position:absolute;inset:0 auto auto 0}
+.info{padding:1rem 1.15rem 1.2rem;display:grid;gap:.45rem;min-width:0}
+.info h2{font-family:var(--f-display);font-weight:700;font-size:1.25rem;margin:0}
+.info p{margin:0;color:var(--muted);font-size:.93rem}
+.pal{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap}
+.pal span{width:15px;height:15px;border-radius:50%;border:1px solid var(--line)}
+.azioni{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.3rem}
+.azioni a{display:inline-flex;align-items:center;padding:.55em 1em;border-radius:8px;font-weight:700;text-decoration:none;font-size:.92rem}
+.apri{background:var(--p);color:#fff}
+.dati{border:1.5px solid var(--line);color:var(--fg)}
+.azioni a:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.pagine{font-size:.85rem;color:var(--muted)}
+.pagine a{color:var(--accent)}
+footer{margin-top:2rem;color:var(--muted);font-size:.85rem;max-width:70ch}
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Fase 2 · prova su 3 farmacie · dati del 06/10/2026</div>
+  <h1>Siti demo per le farmacie di Roma Nord</h1>
+  <p>Tre siti sulla struttura del sito della Farmacia Spadazzi, ognuno con colori, caratteri e impaginazione propri. Apri un sito e naviga tra le pagine come farebbe un cliente. <span class="legenda">Le etichette <i>DA CONFERMARE</i> segnano i dati da verificare con il titolare.</span></p>
+</header>
+<main>
+  <article class="sito" style="--p:#1d2f4d;--s:#fbf6ef">
+    <a class="anteprima" href="farmacia-caluori/index.html" aria-label="Apri il sito della Farmacia Caluori"><iframe src="farmacia-caluori/index.html" title="Anteprima Farmacia Caluori" loading="lazy" tabindex="-1"></iframe></a>
+    <div class="info">
+      <h2>Farmacia Caluori</h2>
+      <p>Piazzale delle Province 8/A · Nomentano, Municipio II</p>
+      <div class="pal" aria-label="Palette"><span style="background:#1d2f4d"></span><span style="background:#e2572f"></span><span style="background:#fbf6ef"></span><p>blu notte e corallo · testo e orari affiancati</p></div>
+      <div class="azioni"><a class="apri" href="farmacia-caluori/index.html">Apri il sito</a><a class="dati" href="farmacia-caluori/README.md">Dati e punti da confermare</a></div>
+      <p class="pagine"><a href="farmacia-caluori/servizi.html">Servizi e prenotazione</a> · <a href="farmacia-caluori/contatti.html">Contatti</a> · <a href="farmacia-caluori/farmacia.html">La farmacia</a></p>
+    </div>
+  </article>
+  <article class="sito" style="--p:#4a2d5c;--s:#fbf8f3">
+    <a class="anteprima" href="farmacia-gerardini/index.html" aria-label="Apri il sito della Farmacia Gerardini"><iframe src="farmacia-gerardini/index.html" title="Anteprima Farmacia Gerardini" loading="lazy" tabindex="-1"></iframe></a>
+    <div class="info">
+      <h2>Farmacia Gerardini</h2>
+      <p>Largo Damiano Chiesa 7/A · Balduina, Municipio XIV</p>
+      <div class="pal" aria-label="Palette"><span style="background:#4a2d5c"></span><span style="background:#d4952a"></span><span style="background:#fbf8f3"></span><p>prugna e zafferano · apertura centrata con i servizi</p></div>
+      <div class="azioni"><a class="apri" href="farmacia-gerardini/index.html">Apri il sito</a><a class="dati" href="farmacia-gerardini/README.md">Dati e punti da confermare</a></div>
+      <p class="pagine"><a href="farmacia-gerardini/servizi.html">Servizi e prenotazione</a> · <a href="farmacia-gerardini/contatti.html">Contatti</a> · <a href="farmacia-gerardini/farmacia.html">La farmacia</a></p>
+    </div>
+  </article>
+  <article class="sito" style="--p:#0b5a87;--s:#f3f8fb">
+    <a class="anteprima" href="farmacia-casal-del-marmo/index.html" aria-label="Apri il sito della Farmacia Casal del Marmo"><iframe src="farmacia-casal-del-marmo/index.html" title="Anteprima Farmacia Casal del Marmo" loading="lazy" tabindex="-1"></iframe></a>
+    <div class="info">
+      <h2>Farmacia Casal del Marmo</h2>
+      <p>Via di Casal del Marmo 201/205 · Casal del Marmo, Municipio XIV</p>
+      <div class="pal" aria-label="Palette"><span style="background:#0b5a87"></span><span style="background:#f2b134"></span><span style="background:#f3f8fb"></span><p>blu oceano e giallo · fascia con orari in evidenza</p></div>
+      <div class="azioni"><a class="apri" href="farmacia-casal-del-marmo/index.html">Apri il sito</a><a class="dati" href="farmacia-casal-del-marmo/README.md">Dati e punti da confermare</a></div>
+      <p class="pagine"><a href="farmacia-casal-del-marmo/servizi.html">Servizi e prenotazione</a> · <a href="farmacia-casal-del-marmo/contatti.html">Contatti</a> · <a href="farmacia-casal-del-marmo/farmacia.html">La farmacia</a></p>
+    </div>
+  </article>
+</main>
+<footer>In questa anteprima la mappa e i pulsanti per chiamare o scrivere possono non funzionare: sul sito pubblicato su un dominio vero funzionano normalmente.</footer>
+</div>
