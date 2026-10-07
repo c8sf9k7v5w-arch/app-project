@@ -1,0 +1,25 @@
+name: Audit accessibilita
+
+on:
+  push:
+    branches: [main]
+    paths: ['audit-accessibilita/**', '.github/workflows/audit-accessibilita.yml']
+  pull_request:
+    paths: ['audit-accessibilita/**', '.github/workflows/audit-accessibilita.yml']
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: audit-accessibilita
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: audit-accessibilita/package-lock.json
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - run: npm test

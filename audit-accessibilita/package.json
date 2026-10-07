@@ -1,0 +1,22 @@
+{
+  "name": "audit-accessibilita",
+  "version": "1.0.0",
+  "description": "Mini-check e audit di accessibilita WCAG 2.1 AA per e-commerce",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "minicheck": "node src/minicheck.mjs",
+    "test": "node --test"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axe-core": "^4.14.0",
+    "playwright": "^1.63.0"
+  },
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  }
+}
