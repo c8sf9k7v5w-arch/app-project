@@ -1,0 +1,1151 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
+<title>Respiro Purificatore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a cool "filter paper" shop. Wide technical headings, mono readouts, one electric LED blue that glows brighter at night. */
+:root{
+  --paper:#EEF2F6;
+  --surface:#FFFFFF;
+  --sunk:#E3E9F0;
+  --ink:#0E1A2B;
+  --muted:#5A6878;
+  --line:#D2DBE5;
+  --led:#2457F0;
+  --led-glow:rgba(36,87,240,.35);
+  --clean:#11A27E;
+  --dust:#C9752A;
+  --bad:#C8423A;
+  --device:#FBFCFD;
+  --device-shade:#DCE3EA;
+  --device-edge:#C5CED8;
+  --scrim:rgba(14,26,43,.45);
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --r:14px;
+  --head:64px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#080D14;--surface:#101823;--sunk:#0C131C;--ink:#E6EDF5;--muted:#8E9CAE;--line:#1F2B39;
+  --led:#5D8DFF;--led-glow:rgba(93,141,255,.55);--clean:#36D3A4;--dust:#E29A50;--bad:#F06A5F;
+  --device:#E4E9EF;--device-shade:#AEB8C4;--device-edge:#8C97A4;--scrim:rgba(0,0,0,.6);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#080D14;--surface:#101823;--sunk:#0C131C;--ink:#E6EDF5;--muted:#8E9CAE;--line:#1F2B39;
+  --led:#5D8DFF;--led-glow:rgba(93,141,255,.55);--clean:#36D3A4;--dust:#E29A50;--bad:#F06A5F;
+  --device:#E4E9EF;--device-shade:#AEB8C4;--device-edge:#8C97A4;--scrim:rgba(0,0,0,.6);color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--head) + 12px)}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);font-stretch:125%;font-weight:800;line-height:1.02;letter-spacing:-.025em;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.9rem,4.6vw,3.4rem)}
+h3{font-size:1.15rem;font-stretch:112%;letter-spacing:-.01em}
+p{margin:0}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--led);outline-offset:3px;border-radius:6px}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.wrap{width:min(1180px,100%);margin-inline:auto;padding-inline:20px}
+.sec{padding-block:clamp(64px,10vw,120px)}
+.lede{color:var(--muted);max-width:58ch;font-size:1.06rem}
+
+/* progress + header */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;transform-origin:0 50%;transform:scaleX(var(--sp,0));background:linear-gradient(90deg,var(--clean),var(--led))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;height:var(--head);background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid transparent;transition:border-color .3s}
+header.top.scrolled{border-bottom-color:var(--line)}
+.top .wrap{display:flex;align-items:center;gap:24px;height:100%}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--display);font-stretch:125%;font-weight:800;font-size:1.15rem;letter-spacing:-.02em;text-decoration:none;color:inherit}
+.logo i{width:22px;height:22px;border-radius:50%;border:2px solid var(--ink);position:relative;display:block}
+.logo i::after{content:"";position:absolute;inset:5px;border-radius:50%;background:var(--led);box-shadow:0 0 10px var(--led-glow)}
+.nav{display:flex;gap:22px;margin-left:auto}
+.nav a{color:var(--muted);text-decoration:none;font-size:.92rem;position:relative}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;background:var(--led);transform:scaleX(0);transform-origin:right;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.nav a:hover{color:var(--ink)}
+.nav a:hover::after{transform:scaleX(1);transform-origin:left}
+.cart-btn{position:relative;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:8px 14px;font-size:.9rem}
+.cart-btn svg{width:18px;height:18px}
+.cart-count{min-width:20px;height:20px;border-radius:10px;background:var(--led);color:#fff;font-family:var(--mono);font-size:.72rem;display:grid;place-items:center;padding-inline:5px}
+.cart-btn.bump{animation:bump .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes bump{30%{transform:scale(1.18) rotate(-4deg)}60%{transform:scale(.94)}}
+@media (max-width:760px){.nav{display:none}.cart-btn{margin-left:auto}}
+
+/* buttons */
+.btn{--mx:0px;--my:0px;display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;border-radius:999px;padding:15px 24px;font-weight:650;font-size:.98rem;text-decoration:none;transform:translate(var(--mx),var(--my));transition:transform .25s cubic-bezier(.2,.8,.2,1),background .2s,box-shadow .3s;position:relative;overflow:hidden;isolation:isolate}
+.btn-primary{background:var(--ink);color:var(--paper)}
+.btn-primary::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--led);transform:translateY(101%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.btn-primary:hover::before{transform:none}
+.btn-primary:hover{box-shadow:0 10px 30px -8px var(--led-glow);color:#fff}
+.btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn svg{width:18px;height:18px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:clamp(40px,7vw,90px) clamp(48px,7vw,96px);--cx:70%;--cy:40%}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(600px circle at var(--cx) var(--cy),var(--led-glow),transparent 60%);opacity:.35;pointer-events:none;transition:opacity .4s}
+#air{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,4vw,56px);align-items:center}
+.hero-copy{display:grid;gap:22px;min-width:0}
+.hero h1{font-size:clamp(2.4rem,6vw,4.7rem);font-weight:900}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.hero h1 .ln>span{display:inline-block;animation:rise 1s cubic-bezier(.2,.9,.2,1) both}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.12s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.24s}
+.hero h1 em{font-style:normal;color:var(--led)}
+@keyframes rise{from{transform:translateY(105%)}}
+.price-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px}
+.price{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:2.2rem;letter-spacing:-.03em}
+.perks{display:flex;flex-wrap:wrap;gap:8px}
+.perk{font-size:.82rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:color-mix(in srgb,var(--surface) 70%,transparent)}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.fade-up{animation:fadeup .9s .35s cubic-bezier(.2,.9,.2,1) both}
+@keyframes fadeup{from{transform:translateY(24px)}}
+
+.device-col{position:relative;display:grid;justify-items:center;min-width:0}
+.device{width:min(330px,72vw);aspect-ratio:300/480;max-width:100%;animation:float 6s ease-in-out infinite,enter 1.2s cubic-bezier(.2,.9,.2,1) both;filter:drop-shadow(0 40px 40px rgba(14,26,43,.18))}
+@keyframes float{50%{transform:translateY(-10px)}}
+@keyframes enter{from{transform:translateY(60px) scale(.94)}}
+.device svg{width:100%;height:100%;overflow:visible}
+.d-body{fill:url(#gBody)}
+.d-cap{fill:url(#gCap)}
+.d-edge{fill:none;stroke:var(--device-edge);stroke-width:1.2}
+.d-slot{fill:var(--device-shade)}
+.d-panel{fill:var(--device-shade);opacity:.55}
+.d-btn{fill:var(--device);stroke:var(--device-edge);stroke-width:1}
+.d-grille{fill:none;stroke:var(--device-edge);stroke-width:2.2;stroke-linecap:round}
+.d-grille-bg{fill:var(--device-shade);opacity:.6}
+.d-label{fill:var(--device-shade)}
+.d-led{fill:var(--led);animation:ledon 1.4s .8s both}
+@keyframes ledon{0%,40%{fill:var(--device-edge);opacity:.5}55%{opacity:1}62%{opacity:.3}70%,100%{opacity:1}}
+.led-halo{fill:var(--led);opacity:var(--led-o,.5);filter:blur(6px);transition:opacity .5s}
+.shadow-floor{position:absolute;bottom:-6px;width:60%;height:26px;border-radius:50%;background:radial-gradient(closest-side,rgba(14,26,43,.22),transparent);animation:shadow 6s ease-in-out infinite;pointer-events:none}
+@keyframes shadow{50%{transform:scaleX(.88);opacity:.7}}
+
+.gauge{position:absolute;left:-6%;bottom:12%;display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px 12px 12px;box-shadow:0 18px 40px -20px rgba(14,26,43,.35);animation:fadeup .9s .7s cubic-bezier(.2,.9,.2,1) both}
+.gauge svg{width:56px;height:56px;transform:rotate(-90deg)}
+.gauge .trk{fill:none;stroke:var(--sunk);stroke-width:6}
+.gauge .val{fill:none;stroke:var(--q,var(--dust));stroke-width:6;stroke-linecap:round;stroke-dasharray:150.8;stroke-dashoffset:var(--off,60);transition:stroke-dashoffset .4s,stroke .6s}
+.gauge b{font-family:var(--mono);font-size:1.5rem;font-weight:600;line-height:1;display:block}
+.gauge small{font-family:var(--mono);font-size:.68rem;color:var(--muted);letter-spacing:.06em}
+.gauge .q{font-size:.78rem;font-weight:650;color:var(--q,var(--dust));transition:color .6s}
+.modes{position:absolute;right:-2%;top:6%;display:grid;gap:6px;animation:fadeup .9s .85s cubic-bezier(.2,.9,.2,1) both}
+.chip{border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 86%,transparent);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;transition:background .25s,color .25s,border-color .25s,transform .2s}
+.chip:hover{transform:translateX(-3px)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.window-btn{margin-top:4px;border-style:dashed}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr}
+  .device-col{padding-block:24px 8px}
+  .gauge{left:0;bottom:4%}
+  .modes{position:relative;right:auto;top:auto;display:flex;flex-wrap:wrap;justify-content:center;margin-top:18px}
+  .chip:hover{transform:none}
+}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);overflow:hidden;background:var(--surface)}
+.marquee-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee span{font-family:var(--display);font-stretch:118%;font-weight:700;font-size:1.05rem;padding:16px 26px;white-space:nowrap;display:flex;align-items:center;gap:26px}
+.marquee span::after{content:"";width:7px;height:7px;border-radius:50%;background:var(--led)}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:48px}
+.stat{background:var(--surface);padding:26px 22px;display:grid;gap:6px;min-width:0}
+.stat b{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat b small{font-family:var(--mono);font-size:.8rem;font-weight:400;letter-spacing:0;color:var(--muted);margin-left:4px}
+.stat p{color:var(--muted);font-size:.9rem}
+@media (max-width:760px){.stats{grid-template-columns:1fr 1fr}}
+
+/* inside / exploded filters */
+.inside{background:var(--ink);color:var(--paper);--line-in:color-mix(in srgb,var(--paper) 16%,transparent)}
+.inside .eyebrow{color:color-mix(in srgb,var(--paper) 60%,transparent)}
+.inside-track{height:280vh;position:relative}
+.inside-sticky{position:sticky;top:var(--head);height:calc(100vh - var(--head));display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;overflow:hidden}
+.stage{height:min(520px,70vh);perspective:1400px;display:grid;place-items:center;position:relative}
+.stack{--p:.7;position:relative;width:200px;height:270px;transform-style:preserve-3d;transform:rotateX(58deg) rotateZ(-38deg)}
+.layer{position:absolute;inset:0;border-radius:10px;transform:translateZ(calc((var(--i) - 1.5) * (14px + var(--p) * 92px)));transition:box-shadow .4s,filter .4s,outline-color .4s;outline:2px solid transparent;outline-offset:4px;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 30px 40px -10px rgba(0,0,0,.55)}
+.layer.dim{filter:saturate(.4) brightness(.6)}
+.layer.on{outline-color:var(--led);box-shadow:0 0 0 1px rgba(255,255,255,.2),0 0 50px -6px var(--led-glow)}
+.l-pre{--i:3;background:repeating-linear-gradient(0deg,rgba(255,255,255,.55) 0 1px,transparent 1px 7px),repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 1px,transparent 1px 7px),#9AA6B4}
+.l-hepa{--i:2;background:repeating-linear-gradient(90deg,#FFFFFF 0 6px,#D6DDE5 6px 9px,#EEF2F6 9px 12px)}
+.l-carbon{--i:1;background:radial-gradient(circle at 30% 30%,#4a525c 0 1.6px,transparent 2px) 0 0/7px 7px,radial-gradient(circle at 70% 60%,#3a4048 0 2px,transparent 2.4px) 3px 2px/9px 9px,#1d2228}
+.l-fan{--i:0;background:radial-gradient(circle,#2a3442 0 18%,transparent 19%),conic-gradient(from 0deg,#3a4556 0 20deg,#232b36 20deg 72deg,#3a4556 72deg 92deg,#232b36 92deg 144deg,#3a4556 144deg 164deg,#232b36 164deg 216deg,#3a4556 216deg 236deg,#232b36 236deg 288deg,#3a4556 288deg 308deg,#232b36 308deg 360deg);border-radius:50%;width:200px;height:200px;top:35px}
+.flow{position:absolute;inset:0;pointer-events:none}
+.steps{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:10px}
+.step{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:16px 18px;border:1px solid var(--line-in);border-radius:var(--r);transition:background .4s,border-color .4s,transform .4s;opacity:.62}
+.step.on{opacity:1;background:color-mix(in srgb,var(--paper) 7%,transparent);border-color:color-mix(in srgb,var(--led) 60%,transparent);transform:translateX(6px)}
+.step .n{font-family:var(--mono);font-size:.8rem;color:var(--led);grid-row:span 2;padding-top:3px}
+.step p{font-size:.92rem;color:color-mix(in srgb,var(--paper) 72%,transparent)}
+.inside h2{color:var(--paper)}
+.meter{margin-top:20px;height:4px;border-radius:2px;background:var(--line-in);overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--clean),var(--led));transform-origin:0 50%;transform:scaleX(var(--p,.7))}
+@media (max-width:860px){
+  .inside-track{height:auto}
+  .inside-sticky{position:relative;top:0;height:auto;grid-template-columns:1fr;padding-block:72px}
+  .stage{height:400px}
+  .stack{width:160px;height:216px}
+  .l-fan{width:160px;height:160px;top:28px}
+}
+
+/* modes */
+.modes-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:40px}
+.tabs{display:flex;gap:6px;padding:5px;border:1px solid var(--line);border-radius:999px;background:var(--surface);width:max-content;max-width:100%;position:relative}
+.tab{position:relative;z-index:1;border:0;background:none;padding:10px 20px;border-radius:999px;font-weight:650;font-size:.92rem;transition:color .3s}
+.tab[aria-selected="true"]{color:var(--paper)}
+.tab-pill{position:absolute;top:5px;bottom:5px;left:0;border-radius:999px;background:var(--ink);transition:transform .45s cubic-bezier(.3,1.3,.5,1),width .45s cubic-bezier(.3,1.3,.5,1)}
+.mode-panel{display:grid;gap:18px;margin-top:26px}
+.mode-panel p{color:var(--muted);max-width:52ch}
+.readouts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.ro{border-top:2px solid var(--ink);padding-top:10px}
+.ro b{font-family:var(--mono);font-size:1.5rem;font-weight:600;display:block;font-variant-numeric:tabular-nums}
+.ro span{font-size:.8rem;color:var(--muted)}
+.fan-box{position:relative;aspect-ratio:1;max-width:440px;width:100%;justify-self:center;border-radius:50%;background:radial-gradient(circle,var(--surface) 55%,var(--sunk));border:1px solid var(--line);display:grid;place-items:center;box-shadow:inset 0 0 0 18px var(--paper),inset 0 0 0 19px var(--line)}
+.fan-box::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px solid var(--led);opacity:var(--ring,.3);box-shadow:0 0 calc(var(--ring,.3) * 50px) var(--led-glow);transition:opacity .6s,box-shadow .6s}
+.fan{width:72%;height:72%;animation:spin var(--spd,1.4s) linear infinite}
+.fan path{fill:var(--ink);opacity:.86}
+.fan circle{fill:var(--paper);stroke:var(--line);stroke-width:2}
+@keyframes spin{to{transform:rotate(360deg)}}
+.db-bars{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);display:flex;gap:4px;align-items:flex-end;height:30px}
+.db-bars i{width:6px;border-radius:2px;background:var(--line);transition:background .4s,height .4s}
+.db-bars i.on{background:var(--led)}
+@media (max-width:860px){.modes-grid{grid-template-columns:1fr}.fan-box{max-width:320px;margin-bottom:40px}}
+
+/* simulator */
+.sim{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,48px);margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r) + 6px);padding:clamp(20px,4vw,40px)}
+.sim label{font-weight:650;font-size:.92rem;display:flex;justify-content:space-between;gap:12px}
+.field{display:grid;gap:10px}
+.sim-controls{display:grid;gap:26px;align-content:start;min-width:0}
+input[type=range]{width:100%;appearance:none;-webkit-appearance:none;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--led) var(--fill,30%),var(--sunk) var(--fill,30%));outline-offset:6px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--surface);border:2px solid var(--led);box-shadow:0 4px 12px -2px var(--led-glow);transition:transform .2s}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--surface);border:2px solid var(--led)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.2)}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg button{border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:8px 14px;font-family:var(--mono);font-size:.85rem}
+.seg button[aria-pressed="true"]{border-color:var(--led);background:color-mix(in srgb,var(--led) 12%,var(--surface));color:var(--ink)}
+.results{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.res{background:var(--paper);border-radius:12px;padding:14px 16px}
+.res b{font-family:var(--mono);font-size:1.6rem;font-weight:600;display:block;font-variant-numeric:tabular-nums}
+.res span{font-size:.8rem;color:var(--muted)}
+.verdict{display:inline-flex;align-items:center;gap:8px;font-weight:650;font-size:.9rem;padding:7px 12px;border-radius:999px;background:color-mix(in srgb,var(--v) 14%,var(--surface));color:var(--ink);border:1px solid color-mix(in srgb,var(--v) 50%,transparent);width:max-content;max-width:100%}
+.verdict::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--v)}
+.room-view{position:relative;display:grid;place-items:center;min-height:320px;background:repeating-linear-gradient(0deg,var(--line) 0 1px,transparent 1px 24px),repeating-linear-gradient(90deg,var(--line) 0 1px,transparent 1px 24px);border-radius:12px;overflow:hidden}
+.room{position:relative;width:var(--rw,60%);aspect-ratio:1.3;max-width:94%;max-height:94%;border:3px solid var(--ink);border-radius:4px;background:color-mix(in srgb,var(--surface) 80%,transparent);transition:width .5s cubic-bezier(.3,1.2,.5,1);display:grid;place-items:center}
+.room::before{content:attr(data-area);position:absolute;top:6px;left:8px;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.room .unit{width:14px;height:22px;border-radius:3px;background:var(--ink);position:absolute;right:10%;bottom:12%;box-shadow:0 0 0 4px color-mix(in srgb,var(--led) 25%,transparent)}
+.swirl{position:absolute;inset:12%;border-radius:50%;border:2px dashed var(--led);opacity:.55;animation:spin var(--sw,6s) linear infinite}
+.swirl.s2{inset:28%;animation-direction:reverse;border-color:var(--clean)}
+@media (max-width:860px){.sim{grid-template-columns:1fr}.room-view{min-height:240px}}
+
+/* gallery */
+.gallery{display:grid;grid-template-columns:1.1fr .9fr;grid-template-rows:auto auto;gap:16px;margin-top:40px}
+.tile{position:relative;border-radius:calc(var(--r) + 4px);overflow:hidden;background:var(--surface);border:1px solid var(--line);transform-style:preserve-3d;transition:transform .2s ease-out;min-width:0}
+.tile.photo{grid-row:span 2;cursor:zoom-in;padding:0}
+.tile.photo img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+.tile.photo:hover img{transform:scale(1.04)}
+.tile .cap{position:absolute;left:12px;bottom:12px;font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;background:var(--surface);color:var(--ink);padding:6px 10px;border-radius:8px;border:1px solid var(--line)}
+.tile .glare{position:absolute;inset:0;background:radial-gradient(400px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.28),transparent 45%);opacity:0;transition:opacity .3s;pointer-events:none}
+.tile:hover .glare{opacity:1}
+.tile.night{background:#060A10;display:grid;place-items:center;min-height:260px;color:#E6EDF5}
+.tile.night .cap{background:#101823;color:#E6EDF5;border-color:#1F2B39}
+.night-led{width:12px;height:12px;border-radius:50%;background:#5D8DFF;box-shadow:0 0 18px 6px rgba(93,141,255,.7),0 0 90px 30px rgba(93,141,255,.25);animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{50%{box-shadow:0 0 10px 3px rgba(93,141,255,.5),0 0 50px 14px rgba(93,141,255,.12);opacity:.65}}
+.night-txt{position:absolute;top:18px;left:18px;right:18px;font-family:var(--mono);font-size:.78rem;color:#8E9CAE;line-height:1.5}
+.tile.detail{min-height:260px;cursor:zoom-in}
+.tile.detail img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 2%;transform:scale(1.9);transform-origin:50% 0}
+@media (max-width:760px){.gallery{grid-template-columns:1fr}.tile.photo{grid-row:auto}}
+
+.lightbox{position:fixed;inset:0;z-index:90;background:var(--scrim);display:grid;place-items:center;padding:24px;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.lightbox img{max-height:86vh;width:auto;max-width:100%;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.5);animation:lb .45s cubic-bezier(.2,.9,.2,1)}
+@keyframes lb{from{transform:scale(.9) translateY(20px);opacity:.4}}
+.lightbox button{position:absolute;top:calc(16px + env(safe-area-inset-top,0px));right:16px;border:0;background:var(--surface);border-radius:999px;padding:10px 16px;font-weight:650}
+
+/* specs + faq */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px);margin-top:40px}
+.specs{margin:0;display:grid}
+.specs div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:16px;padding:13px 0;border-bottom:1px solid var(--line)}
+.specs dt{color:var(--muted);font-size:.92rem}
+.specs dd{margin:0;font-family:var(--mono);font-size:.88rem;font-variant-numeric:tabular-nums}
+.note{font-size:.8rem;color:var(--muted);margin-top:14px}
+.faq{display:grid}
+.qa{border-bottom:1px solid var(--line)}
+.qa button{width:100%;text-align:left;border:0;background:none;padding:18px 0;font-weight:650;font-size:1rem;display:flex;justify-content:space-between;gap:16px;align-items:center}
+.qa button i{width:22px;height:22px;flex:none;position:relative}
+.qa button i::before,.qa button i::after{content:"";position:absolute;left:4px;right:4px;top:10px;height:2px;background:var(--ink);transition:transform .35s cubic-bezier(.3,1.3,.5,1)}
+.qa button i::after{transform:rotate(90deg)}
+.qa.open button i::after{transform:rotate(0)}
+.qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s cubic-bezier(.2,.8,.2,1)}
+.qa.open .ans{grid-template-rows:1fr}
+.qa .ans>div{overflow:hidden}
+.qa .ans p{color:var(--muted);padding-bottom:18px;max-width:60ch}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+
+/* buy */
+.buy{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:40px;align-items:start}
+.bundles{display:grid;gap:10px}
+.bundle{display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:center;padding:16px 18px;border:1.5px solid var(--line);border-radius:var(--r);background:var(--surface);cursor:pointer;transition:border-color .25s,transform .25s,box-shadow .25s;position:relative}
+.bundle:hover{transform:translateY(-2px)}
+.bundle input{position:absolute;opacity:0;pointer-events:none}
+.bundle .dot{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);grid-row:span 2;display:grid;place-items:center;transition:border-color .25s}
+.bundle .dot::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--led);transform:scale(0);transition:transform .3s cubic-bezier(.3,1.6,.5,1)}
+.bundle:has(input:checked){border-color:var(--led);box-shadow:0 10px 30px -16px var(--led-glow)}
+.bundle:has(input:checked) .dot{border-color:var(--led)}
+.bundle:has(input:checked) .dot::after{transform:scale(1)}
+.bundle:has(input:focus-visible){outline:2px solid var(--led);outline-offset:3px}
+.bundle strong{font-weight:700}
+.bundle small{color:var(--muted);font-size:.84rem;grid-column:2}
+.bundle .bp{font-family:var(--mono);font-weight:600;grid-row:span 2}
+.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;background:var(--clean);color:#fff;padding:2px 7px;border-radius:5px;margin-left:8px;vertical-align:2px}
+.addon{display:flex;gap:12px;align-items:center;padding:12px 4px;font-size:.94rem;cursor:pointer}
+.addon input{width:18px;height:18px;accent-color:var(--led)}
+.summary{position:sticky;top:calc(var(--head) + 20px);background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r) + 6px);padding:24px;display:grid;gap:18px;box-shadow:0 30px 60px -40px rgba(14,26,43,.4)}
+.summary .total{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.summary .total b{font-family:var(--display);font-stretch:125%;font-weight:800;font-size:2.4rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.qty button{border:0;background:none;width:38px;height:38px;font-size:1.1rem}
+.qty button:hover{background:var(--sunk)}
+.qty output{min-width:30px;text-align:center;font-family:var(--mono)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.acc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+.acc{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:10px;align-content:start;min-width:0}
+.acc .sw{height:70px;border-radius:10px}
+.acc .row b{font-family:var(--mono);font-size:.92rem}
+.acc button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:.84rem;font-weight:650;transition:background .2s,color .2s}
+.acc button:hover{background:var(--ink);color:var(--paper)}
+@media (max-width:860px){.buy{grid-template-columns:1fr}.summary{position:relative;top:0}.acc-grid{grid-template-columns:1fr}}
+
+/* drawer */
+.scrim{position:fixed;inset:0;background:var(--scrim);z-index:80;opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);z-index:81;background:var(--paper);border-left:1px solid var(--line);transform:translateX(102%);transition:transform .5s cubic-bezier(.2,.9,.2,1);display:grid;grid-template-rows:auto 1fr auto;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.on{transform:none}
+.dr-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+.dr-head h3{font-size:1.2rem}
+.x{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:38px;height:38px;font-size:1.1rem}
+.dr-body{overflow:auto;padding:16px 20px;display:grid;gap:12px;align-content:start}
+.line{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;animation:slidein .4s cubic-bezier(.2,.9,.2,1)}
+@keyframes slidein{from{transform:translateX(30px)}}
+.line .th{width:56px;height:56px;border-radius:8px;background:var(--sunk);display:grid;place-items:center;overflow:hidden}
+.line .th img{width:100%;height:100%;object-fit:cover}
+.line .nm{font-weight:650;font-size:.92rem;line-height:1.3}
+.line .sub{font-size:.78rem;color:var(--muted)}
+.line .rt{display:grid;gap:6px;justify-items:end}
+.line .rt b{font-family:var(--mono);font-size:.88rem}
+.line .qty button{width:28px;height:28px;font-size:.95rem}
+.empty{text-align:center;padding:40px 10px;color:var(--muted);display:grid;gap:14px;justify-items:center}
+.dr-foot{border-top:1px solid var(--line);padding:16px 20px;display:grid;gap:12px;background:var(--surface)}
+.ship{font-size:.84rem;color:var(--muted);display:grid;gap:6px}
+.ship .bar{height:6px;border-radius:3px;background:var(--sunk);overflow:hidden}
+.ship .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--clean),var(--led));transform-origin:0 50%;transform:scaleX(var(--f,0));transition:transform .6s cubic-bezier(.2,.9,.2,1)}
+.tot{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.9rem}
+.tot.big{font-size:1.1rem;font-weight:600}
+form.co{display:grid;gap:10px}
+form.co label{display:grid;gap:4px;font-size:.82rem;color:var(--muted)}
+form.co input{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:11px 12px;font-size:.95rem;color:var(--ink)}
+form.co input:focus{outline:2px solid var(--led);outline-offset:0;border-color:transparent}
+form.co .r2{display:grid;grid-template-columns:1fr 110px;gap:10px}
+.demo-note{font-size:.78rem;color:var(--muted);background:var(--sunk);border-radius:10px;padding:10px 12px}
+.done{text-align:center;display:grid;gap:12px;justify-items:center;padding:30px 6px}
+.done .ok{width:72px;height:72px;border-radius:50%;background:var(--clean);display:grid;place-items:center;animation:pop .6s cubic-bezier(.3,1.6,.5,1)}
+.done .ok svg{width:34px;height:34px;stroke:#fff;fill:none;stroke-width:3;stroke-dasharray:40;stroke-dashoffset:40;animation:draw .6s .3s forwards}
+@keyframes pop{from{transform:scale(0)}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.code{font-family:var(--mono);background:var(--surface);border:1px dashed var(--line);padding:8px 14px;border-radius:8px;user-select:all}
+
+/* sticky buy bar */
+.buybar{position:fixed;left:0;right:0;bottom:0;z-index:40;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .45s cubic-bezier(.2,.9,.2,1)}
+.buybar.on{transform:none}
+.buybar .wrap{display:flex;align-items:center;gap:14px;padding-inline:0}
+.buybar .bb-name{font-weight:700;font-size:.95rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.buybar .bb-price{font-family:var(--mono);color:var(--muted);font-size:.85rem}
+.buybar .btn{margin-left:auto;padding:11px 18px;flex:none}
+
+/* toast + fly */
+.toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:95;transform:translate(-50%,30px);opacity:0;background:var(--ink);color:var(--paper);padding:11px 18px;border-radius:999px;font-size:.9rem;font-weight:600;transition:transform .4s cubic-bezier(.2,.9,.2,1),opacity .3s;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.on{transform:translate(-50%,0);opacity:1}
+.fly{position:fixed;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:var(--led);box-shadow:0 0 20px var(--led-glow);z-index:100;pointer-events:none}
+.burst{position:fixed;z-index:100;pointer-events:none;width:7px;height:7px;border-radius:50%}
+
+/* reveal: content stays visible; only position animates */
+.rv{transition:transform 1s cubic-bezier(.2,.9,.2,1)}
+.rv.pre{transform:translateY(40px)}
+
+footer{border-top:1px solid var(--line);padding-block:40px 110px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:16px 32px;justify-content:space-between}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  html{scroll-behavior:auto}
+  .rv.pre{transform:none}
+}
+</style>
+
+<div class="progress" id="progress"></div>
+
+<header class="top" id="top">
+  <div class="wrap">
+    <a class="logo" href="#home"><i></i>Respiro</a>
+    <nav class="nav" aria-label="Sezioni">
+      <a href="#filtri">Filtri</a>
+      <a href="#modalita">Modalità</a>
+      <a href="#stanza">La tua stanza</a>
+      <a href="#scheda">Scheda tecnica</a>
+      <a href="#acquista">Acquista</a>
+    </nav>
+    <button class="cart-btn" id="cartBtn" aria-label="Apri il carrello">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h9.3a1 1 0 0 0 1-.8L21 8H6.2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+      <span>Carrello</span><span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero" id="hero">
+  <canvas id="air" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Purificatore d'aria EZVIZ · Filtro HEPA H13</span>
+      <h1><span class="ln"><span>Aria pulita,</span></span><span class="ln"><span>stanza per</span></span><span class="ln"><span><em>stanza.</em></span></span></h1>
+      <p class="lede fade-up">Cattura polvere, pollini e peli di animali fino a 0,3&nbsp;µm. Il sensore laser misura il PM2.5 in tempo reale e regola la ventola da solo. Di notte scende a 24&nbsp;dB e spegne quasi tutte le luci.</p>
+      <div class="price-row fade-up">
+        <span class="price" id="heroPrice">€ 229,00</span>
+        <span class="perks"><span class="perk">Spedizione gratuita</span><span class="perk">Reso entro 30 giorni</span><span class="perk">Garanzia 2 anni</span></span>
+      </div>
+      <div class="ctas fade-up">
+        <button class="btn btn-primary magnet" data-add="base">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Aggiungi al carrello</button>
+        <a class="btn btn-ghost magnet" href="#filtri">Guarda come filtra</a>
+      </div>
+    </div>
+
+    <div class="device-col">
+      <div class="device" id="device">
+        <svg viewBox="0 0 300 480" role="img" aria-label="Purificatore d'aria bianco con maniglia, griglia ondulata e LED blu">
+          <defs>
+            <linearGradient id="gBody" x1="0" x2="1"><stop offset="0" style="stop-color:var(--device-shade)"/><stop offset=".18" style="stop-color:var(--device)"/><stop offset=".8" style="stop-color:var(--device)"/><stop offset="1" style="stop-color:var(--device-shade)"/></linearGradient>
+            <linearGradient id="gCap" x1="0" x2="0" y1="0" y2="1"><stop offset="0" style="stop-color:var(--device)"/><stop offset="1" style="stop-color:var(--device-shade)"/></linearGradient>
+            <clipPath id="grClip"><path d="M46 140 Q150 124 254 140 L254 214 Q150 202 46 214Z"/></clipPath>
+          </defs>
+          <rect x="22" y="112" width="256" height="362" rx="30" class="d-body"/>
+          <rect x="22" y="112" width="256" height="362" rx="30" class="d-edge"/>
+          <rect x="12" y="8" width="276" height="122" rx="42" class="d-cap"/>
+          <rect x="12" y="8" width="276" height="122" rx="42" class="d-edge"/>
+          <rect x="72" y="16" width="168" height="16" rx="8" class="d-panel"/>
+          <circle cx="98" cy="24" r="5" class="d-btn"/><circle cx="124" cy="24" r="5" class="d-btn"/>
+          <circle cx="188" cy="24" r="5" class="d-btn"/><circle cx="214" cy="24" r="5" class="d-btn"/>
+          <circle cx="156" cy="24" r="9" class="led-halo" id="ledHalo"/>
+          <circle cx="156" cy="24" r="3.2" class="d-led"/>
+          <rect x="102" y="56" width="98" height="30" rx="15" class="d-slot"/>
+          <g clip-path="url(#grClip)">
+            <rect x="40" y="120" width="220" height="100" class="d-grille-bg"/>
+            <g id="slats">
+              <path class="d-grille" d="M40 146 C 100 126, 190 158, 260 138"/>
+              <path class="d-grille" d="M40 155 C 100 135, 190 167, 260 147"/>
+              <path class="d-grille" d="M40 164 C 100 144, 190 176, 260 156"/>
+              <path class="d-grille" d="M40 173 C 100 153, 190 185, 260 165"/>
+              <path class="d-grille" d="M40 182 C 100 162, 190 194, 260 174"/>
+              <path class="d-grille" d="M40 191 C 100 171, 190 203, 260 183"/>
+              <path class="d-grille" d="M40 200 C 100 180, 190 212, 260 192"/>
+              <path class="d-grille" d="M40 209 C 100 189, 190 221, 260 201"/>
+            </g>
+          </g>
+          <path d="M46 140 Q150 124 254 140 L254 214 Q150 202 46 214Z" class="d-edge"/>
+          <rect x="132" y="300" width="40" height="30" rx="3" class="d-label"/>
+          <rect x="132" y="334" width="40" height="6" rx="2" class="d-label"/>
+        </svg>
+      </div>
+      <div class="shadow-floor"></div>
+
+      <div class="gauge" id="gauge" style="--off:40">
+        <svg viewBox="0 0 56 56" aria-hidden="true"><circle class="trk" cx="28" cy="28" r="24"/><circle class="val" cx="28" cy="28" r="24"/></svg>
+        <div>
+          <small>PM2.5 · µg/m³</small>
+          <b id="pm">58</b>
+          <span class="q" id="pmq">Aria moderata</span>
+        </div>
+      </div>
+
+      <div class="modes" role="group" aria-label="Modalità del purificatore">
+        <button class="chip" data-mode="sleep" aria-pressed="false">Notte</button>
+        <button class="chip" data-mode="auto" aria-pressed="true">Auto</button>
+        <button class="chip" data-mode="turbo" aria-pressed="false">Turbo</button>
+        <button class="chip window-btn" id="windowBtn">+ Apri la finestra</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>HEPA H13</span><span>Trattiene il 99,97% delle particelle da 0,3 µm</span><span>Sensore laser PM2.5</span><span>24 dB in modalità notte</span><span>Controllo dall'app EZVIZ</span><span>Filtro ai carboni attivi per gli odori</span>
+    <span>HEPA H13</span><span>Trattiene il 99,97% delle particelle da 0,3 µm</span><span>Sensore laser PM2.5</span><span>24 dB in modalità notte</span><span>Controllo dall'app EZVIZ</span><span>Filtro ai carboni attivi per gli odori</span>
+  </div>
+</div>
+
+<section class="sec">
+  <div class="wrap">
+    <span class="eyebrow">In breve</span>
+    <h2 class="rv" style="margin-top:12px">Fatto per la casa vera:<br>polvere, animali, cucina.</h2>
+    <div class="stats rv">
+      <div class="stat"><b><span class="count" data-to="380">380</span><small>m³/h</small></b><p>Portata d'aria pulita (CADR)</p></div>
+      <div class="stat"><b><span class="count" data-to="99.97" data-dec="2">99,97</span><small>%</small></b><p>Particelle da 0,3 µm trattenute</p></div>
+      <div class="stat"><b><span class="count" data-to="45">45</span><small>m²</small></b><p>Superficie consigliata</p></div>
+      <div class="stat"><b><span class="count" data-to="24">24</span><small>dB(A)</small></b><p>Rumore minimo, modalità notte</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="inside" id="filtri">
+  <div class="inside-track" id="insideTrack">
+    <div class="inside-sticky wrap">
+      <div class="stage" aria-hidden="true">
+        <div class="stack" id="stack">
+          <div class="layer l-fan"></div>
+          <div class="layer l-carbon"></div>
+          <div class="layer l-hepa"></div>
+          <div class="layer l-pre"></div>
+        </div>
+      </div>
+      <div style="min-width:0">
+        <span class="eyebrow">Dentro il purificatore</span>
+        <h2 style="margin-top:12px">Tre strati, un solo passaggio.</h2>
+        <ol class="steps" id="steps">
+          <li class="step on"><span class="n">01</span><h3>Pre-filtro a rete</h3><p>Ferma capelli, peli e polvere grossa. Si aspira o si sciacqua, così il filtro HEPA dura di più.</p></li>
+          <li class="step"><span class="n">02</span><h3>HEPA H13</h3><p>Fibre pieghettate che trattengono il 99,97% delle particelle da 0,3 µm: pollini, spore, PM2.5.</p></li>
+          <li class="step"><span class="n">03</span><h3>Carboni attivi</h3><p>Assorbono gli odori di cucina, fumo e composti volatili prima che l'aria torni nella stanza.</p></li>
+        </ol>
+        <div class="meter" aria-hidden="true"><i id="meterFill"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="modalita">
+  <div class="wrap">
+    <span class="eyebrow">Modalità</span>
+    <h2 class="rv" style="margin-top:12px">Lavora quando serve.<br>Tace quando dormi.</h2>
+    <div class="modes-grid">
+      <div style="min-width:0">
+        <div class="tabs" role="tablist" aria-label="Modalità" id="tabs">
+          <span class="tab-pill" id="tabPill"></span>
+          <button class="tab" role="tab" data-mode="sleep" aria-selected="false">Notte</button>
+          <button class="tab" role="tab" data-mode="auto" aria-selected="true">Auto</button>
+          <button class="tab" role="tab" data-mode="turbo" aria-selected="false">Turbo</button>
+        </div>
+        <div class="mode-panel" role="tabpanel">
+          <h3 id="modeTitle">Auto: decide il sensore</h3>
+          <p id="modeText">Il sensore laser legge il PM2.5 ogni pochi secondi. Quando cucini o apri la finestra la ventola accelera, poi torna al minimo appena l'aria è pulita.</p>
+          <div class="readouts">
+            <div class="ro"><b id="roDb">38</b><span>dB(A)</span></div>
+            <div class="ro"><b id="roW">22</b><span>watt</span></div>
+            <div class="ro"><b id="roRpm">980</b><span>giri/min</span></div>
+          </div>
+          <p class="note">Valori indicativi per questa vetrina.</p>
+        </div>
+      </div>
+      <div class="fan-box" id="fanBox">
+        <svg class="fan" viewBox="-100 -100 200 200" aria-hidden="true">
+          <g id="blades"></g>
+          <circle r="16"/>
+        </svg>
+        <div class="db-bars" id="dbBars" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="stanza" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Calcola per la tua stanza</span>
+    <h2 class="rv" style="margin-top:12px">Quanto ci mette a pulire l'aria?</h2>
+    <div class="sim rv">
+      <div class="sim-controls">
+        <div class="field">
+          <label for="area">Superficie della stanza <span class="mono" id="areaOut">25 m²</span></label>
+          <input type="range" id="area" min="8" max="80" step="1" value="25">
+        </div>
+        <div class="field">
+          <span style="font-weight:650;font-size:.92rem">Altezza del soffitto</span>
+          <div class="seg" id="heightSeg">
+            <button data-h="2.7" aria-pressed="true">2,7 m</button>
+            <button data-h="3" aria-pressed="false">3,0 m</button>
+            <button data-h="3.5" aria-pressed="false">3,5 m</button>
+          </div>
+        </div>
+        <div class="results">
+          <div class="res"><b id="rVol">67,5</b><span>m³ d'aria</span></div>
+          <div class="res"><b id="rMin">10,7</b><span>minuti per un ricambio completo</span></div>
+          <div class="res"><b id="rAch">5,6</b><span>ricambi d'aria all'ora</span></div>
+          <div class="res"><b id="rPm">≈ 22</b><span>minuti per passare da 60 a 10 µg/m³</span></div>
+        </div>
+        <span class="verdict" id="verdict" style="--v:var(--clean)">Ottimo anche per chi soffre di allergie</span>
+      </div>
+      <div class="room-view" aria-hidden="true">
+        <div class="room" id="room" data-area="25 m²">
+          <div class="swirl" id="swirl"></div><div class="swirl s2"></div>
+          <div class="unit"></div>
+        </div>
+      </div>
+    </div>
+    <p class="note">Calcolo con CADR di 380 m³/h. In una stanza reale porte aperte e mobili allungano un po' i tempi.</p>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Galleria</span>
+    <h2 class="rv" style="margin-top:12px">Da vicino.</h2>
+    <div class="gallery">
+      <button class="tile photo tilt" id="photoTile" aria-label="Ingrandisci la foto del prodotto">
+        <img src="product.jpg" alt="Foto reale del purificatore d'aria EZVIZ bianco, vista frontale" id="productImg">
+        <span class="glare"></span>
+        <span class="cap">Foto reale · vista frontale</span>
+      </button>
+      <div class="tile night tilt">
+        <p class="night-txt">02:14 · Modalità notte<br>PM2.5 4 µg/m³ · 24 dB</p>
+        <span class="night-led"></span>
+        <span class="glare"></span>
+        <span class="cap">Di notte resta acceso solo il LED</span>
+      </div>
+      <button class="tile detail tilt" id="detailTile" aria-label="Ingrandisci il pannello comandi">
+        <img src="product.jpg" alt="Dettaglio del pannello comandi con LED blu">
+        <span class="glare"></span>
+        <span class="cap">Pannello comandi e maniglia</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="scheda" style="padding-top:0">
+  <div class="wrap">
+    <div class="two">
+      <div style="min-width:0">
+        <span class="eyebrow">Scheda tecnica</span>
+        <h2 style="margin-top:12px;margin-bottom:22px">I numeri.</h2>
+        <dl class="specs">
+          <div><dt>CADR particelle</dt><dd>380 m³/h</dd></div>
+          <div><dt>Filtrazione</dt><dd>Pre-filtro + HEPA H13 + carboni attivi</dd></div>
+          <div><dt>Superficie consigliata</dt><dd>fino a 45 m²</dd></div>
+          <div><dt>Sensore</dt><dd>PM2.5 laser</dd></div>
+          <div><dt>Rumorosità</dt><dd>24–56 dB(A)</dd></div>
+          <div><dt>Potenza</dt><dd>45 W max</dd></div>
+          <div><dt>Connessione</dt><dd>Wi-Fi 2,4 GHz, app EZVIZ</dd></div>
+          <div><dt>Durata filtro</dt><dd>6–12 mesi, avviso in app</dd></div>
+          <div><dt>Colore</dt><dd>Bianco</dd></div>
+        </dl>
+        <p class="note">Valori indicativi per questa vetrina dimostrativa: verificali sull'etichetta e sul manuale del modello prima della vendita.</p>
+      </div>
+      <div style="min-width:0">
+        <span class="eyebrow">Domande frequenti</span>
+        <h2 style="margin-top:12px;margin-bottom:22px">Prima di comprare.</h2>
+        <div class="faq" id="faq">
+          <div class="qa open"><button aria-expanded="true">Ogni quanto si cambia il filtro?<i></i></button><div class="ans"><div><p>In media ogni 6–12 mesi, in base a quanto lo usi e alla qualità dell'aria. L'app conta le ore di funzionamento e ti avvisa quando è il momento.</p></div></div></div>
+          <div class="qa"><button aria-expanded="false">Si può tenere acceso in camera da letto?<i></i></button><div class="ans"><div><p>Sì. In modalità notte la ventola scende a 24 dB, più o meno come un sussurro, e il pannello spegne le luci tranne un LED tenue.</p></div></div></div>
+          <div class="qa"><button aria-expanded="false">Serve per chi ha animali in casa?<i></i></button><div class="ans"><div><p>Il pre-filtro trattiene peli e forfora, mentre lo strato ai carboni riduce gli odori. Pulisci il pre-filtro ogni due settimane.</p></div></div></div>
+          <div class="qa"><button aria-expanded="false">Raffresca l'aria come un condizionatore?<i></i></button><div class="ans"><div><p>No: è un purificatore. Filtra l'aria senza cambiarne la temperatura né l'umidità, quindi puoi usarlo tutto l'anno insieme al climatizzatore.</p></div></div></div>
+          <div class="qa"><button aria-expanded="false">Quanto consuma?<i></i></button><div class="ans"><div><p>Da circa 4 W in modalità notte a 45 W in turbo. Acceso tutto il giorno in Auto costa pochi euro al mese.</p></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="acquista" style="padding-top:0">
+  <div class="wrap">
+    <span class="eyebrow">Acquista</span>
+    <h2 class="rv" style="margin-top:12px">Scegli la confezione.</h2>
+    <div class="buy">
+      <div style="min-width:0">
+        <div class="bundles" id="bundles">
+          <label class="bundle"><input type="radio" name="bundle" id="b-base" value="base" checked><span class="dot"></span><strong>Solo purificatore</strong><span class="bp">€ 229</span><small>Con filtro HEPA H13 già installato</small></label>
+          <label class="bundle"><input type="radio" name="bundle" id="b-one" value="one"><span class="dot"></span><strong>Con un filtro di ricambio <span class="tag">Più scelto</span></strong><span class="bp">€ 265</span><small>Copre circa un anno. Risparmi € 13</small></label>
+          <label class="bundle"><input type="radio" name="bundle" id="b-two" value="two"><span class="dot"></span><strong>Kit due anni</strong><span class="bp">€ 299</span><small>Due filtri di ricambio e kit pulizia. Risparmi € 40</small></label>
+        </div>
+        <label class="addon"><input type="checkbox" id="warranty"> Estendi la garanzia a 4 anni <span class="mono" style="color:var(--muted)">+ € 19</span></label>
+
+        <span class="eyebrow" style="display:block;margin-top:24px">Accessori</span>
+        <div class="acc-grid">
+          <div class="acc"><div class="sw" style="background:repeating-linear-gradient(90deg,#FFFFFF 0 6px,#D6DDE5 6px 9px,#EEF2F6 9px 12px)"></div><strong>Filtro HEPA H13</strong><div class="row"><b>€ 49</b><button data-add="filter">Aggiungi</button></div></div>
+          <div class="acc"><div class="sw" style="background:repeating-linear-gradient(0deg,rgba(255,255,255,.55) 0 1px,transparent 1px 7px),repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 1px,transparent 1px 7px),#9AA6B4"></div><strong>Pre-filtro lavabile</strong><div class="row"><b>€ 15</b><button data-add="pre">Aggiungi</button></div></div>
+          <div class="acc"><div class="sw" style="background:radial-gradient(circle at 30% 30%,#4a525c 0 1.6px,transparent 2px) 0 0/7px 7px,#1d2228"></div><strong>Filtro carboni attivi</strong><div class="row"><b>€ 25</b><button data-add="carbon">Aggiungi</button></div></div>
+        </div>
+      </div>
+
+      <aside class="summary" aria-label="Riepilogo">
+        <div class="row"><span class="eyebrow">Il tuo ordine</span><span class="perk">Spedisce in 24 h</span></div>
+        <div>
+          <strong id="sumName">Purificatore EZVIZ</strong>
+          <p style="color:var(--muted);font-size:.9rem" id="sumSub">Solo purificatore</p>
+        </div>
+        <div class="row">
+          <span style="font-size:.9rem">Quantità</span>
+          <div class="qty"><button id="qMinus" aria-label="Diminuisci">−</button><output id="qOut">1</output><button id="qPlus" aria-label="Aumenta">+</button></div>
+        </div>
+        <div class="total"><span style="color:var(--muted)">Totale</span><b id="sumTotal">€ 229,00</b></div>
+        <button class="btn btn-primary magnet" id="addMain" style="width:100%">Aggiungi al carrello</button>
+        <p class="note" style="margin:0">IVA inclusa. Spedizione gratuita sopra € 99.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><strong style="color:var(--ink)">Respiro</strong> · negozio dimostrativo. Nessun pagamento reale viene elaborato.</div>
+    <div>EZVIZ è un marchio dei rispettivi proprietari.</div>
+  </div>
+</footer>
+
+<div class="buybar" id="buybar">
+  <div class="wrap">
+    <div style="min-width:0"><div class="bb-name">Purificatore d'aria EZVIZ</div><div class="bb-price">da € 229 · spedizione gratuita</div></div>
+    <button class="btn btn-primary" data-add="base">Aggiungi</button>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Carrello" aria-hidden="true">
+  <div class="dr-head"><h3 id="drTitle">Carrello</h3><button class="x" id="drClose" aria-label="Chiudi">✕</button></div>
+  <div class="dr-body" id="drBody"></div>
+  <div class="dr-foot" id="drFoot"></div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="lightbox" id="lightbox" hidden><button id="lbClose">Chiudi</button><img alt="Foto del prodotto ingrandita" id="lbImg"></div>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const eur = n => new Intl.NumberFormat('it-IT', {style:'currency', currency:'EUR'}).format(n);
+const num = (n, d = 1) => n.toLocaleString('it-IT', {minimumFractionDigits:d, maximumFractionDigits:d});
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const imgSrc = $('#productImg').getAttribute('src');
+
+/* ---------- catalog ---------- */
+const P = {
+  base:    {name:"Purificatore d'aria EZVIZ", sub:'Solo purificatore', price:229, img:true},
+  one:     {name:"Purificatore d'aria EZVIZ", sub:'Con un filtro di ricambio', price:265, img:true},
+  two:     {name:"Purificatore d'aria EZVIZ", sub:'Kit due anni', price:299, img:true},
+  warranty:{name:'Garanzia estesa 4 anni', sub:'Servizio', price:19},
+  filter:  {name:'Filtro HEPA H13', sub:'Ricambio', price:49, sw:'repeating-linear-gradient(90deg,#FFFFFF 0 6px,#D6DDE5 6px 9px,#EEF2F6 9px 12px)'},
+  pre:     {name:'Pre-filtro lavabile', sub:'Ricambio', price:15, sw:'repeating-linear-gradient(0deg,rgba(255,255,255,.55) 0 1px,transparent 1px 7px),repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 1px,transparent 1px 7px),#9AA6B4'},
+  carbon:  {name:'Filtro carboni attivi', sub:'Ricambio', price:25, sw:'#1d2228'}
+};
+P.warranty.sw = 'linear-gradient(135deg,var(--led),var(--clean))';
+const FREE = 99, SHIP = 7.9;
+
+/* ---------- cart state ---------- */
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem('respiro-cart') || '{}') || {}; } catch (e) { cart = {}; }
+for (const k in cart) if (!P[k] || !(cart[k] > 0)) delete cart[k];
+const save = () => { try { localStorage.setItem('respiro-cart', JSON.stringify(cart)); } catch (e) {} };
+const count = () => Object.values(cart).reduce((a, b) => a + b, 0);
+const subtotal = () => Object.entries(cart).reduce((a, [k, q]) => a + P[k].price * q, 0);
+
+function add(key, q = 1, from) {
+  cart[key] = (cart[key] || 0) + q;
+  save(); renderCart();
+  if (from) fly(from);
+  toast(`${P[key].name} aggiunto al carrello`);
+}
+
+/* ---------- toast ---------- */
+let tt;
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('on');
+  clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), 2200);
+}
+
+/* ---------- fly to cart ---------- */
+function fly(from) {
+  const btn = $('#cartBtn');
+  const a = from.getBoundingClientRect(), b = btn.getBoundingClientRect();
+  const x0 = a.left + a.width / 2, y0 = a.top + a.height / 2;
+  const x1 = b.left + b.width - 14, y1 = b.top + b.height / 2;
+  const bump = () => { btn.classList.remove('bump'); void btn.offsetWidth; btn.classList.add('bump'); };
+  if (reduce) { bump(); return; }
+  const d = document.createElement('div'); d.className = 'fly'; document.body.appendChild(d);
+  const mx = (x0 + x1) / 2, my = Math.min(y0, y1) - 140;
+  const anim = d.animate([
+    {transform:`translate(${x0}px,${y0}px) scale(1)`},
+    {transform:`translate(${mx}px,${my}px) scale(1.4)`, offset:.45},
+    {transform:`translate(${x1}px,${y1}px) scale(.4)`}
+  ], {duration:850, easing:'cubic-bezier(.45,0,.2,1)'});
+  anim.onfinish = () => { d.remove(); bump(); burst(x1, y1, 10); };
+}
+function burst(x, y, n = 18, colors) {
+  if (reduce) return;
+  colors = colors || [css('--led'), css('--clean')];
+  for (let i = 0; i < n; i++) {
+    const p = document.createElement('div'); p.className = 'burst';
+    p.style.background = colors[i % colors.length];
+    document.body.appendChild(p);
+    const ang = Math.random() * Math.PI * 2, dist = 30 + Math.random() * (n > 20 ? 160 : 50);
+    p.animate([
+      {transform:`translate(${x}px,${y}px) scale(1)`, opacity:1},
+      {transform:`translate(${x + Math.cos(ang) * dist}px,${y + Math.sin(ang) * dist + 30}px) scale(0)`, opacity:0}
+    ], {duration:700 + Math.random() * 500, easing:'cubic-bezier(.1,.8,.3,1)'}).onfinish = () => p.remove();
+  }
+}
+
+/* ---------- drawer ---------- */
+const drawer = $('#drawer'), scrim = $('#scrim');
+let step = 'cart';
+function openCart() { step = 'cart'; renderCart(); drawer.classList.add('on'); scrim.classList.add('on'); drawer.setAttribute('aria-hidden', 'false'); setTimeout(() => $('#drClose').focus(), 300); }
+function closeCart() { drawer.classList.remove('on'); scrim.classList.remove('on'); drawer.setAttribute('aria-hidden', 'true'); }
+$('#cartBtn').onclick = openCart; $('#drClose').onclick = closeCart; scrim.onclick = closeCart;
+addEventListener('keydown', e => { if (e.key === 'Escape') { closeCart(); closeLb(); } });
+
+function thumb(k) {
+  return P[k].img ? `<img src="${imgSrc}" alt="">` : `<span style="width:100%;height:100%;background:${P[k].sw}"></span>`;
+}
+function renderCart() {
+  const c = count();
+  $('#cartCount').textContent = c;
+  const body = $('#drBody'), foot = $('#drFoot');
+  if (step === 'done') return;
+  if (!c) {
+    $('#drTitle').textContent = 'Carrello';
+    body.innerHTML = `<div class="empty"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 4h2l2.4 11.2a1 1 0 0 0 1 .8h9.3a1 1 0 0 0 1-.8L21 8H6.2"/></svg><p>Il carrello è vuoto.<br>Inizia dal purificatore: arriva con il filtro HEPA già montato.</p><button class="btn btn-primary" data-add="base">Aggiungi il purificatore · € 229</button></div>`;
+    foot.innerHTML = ''; foot.hidden = true; return;
+  }
+  foot.hidden = false;
+  const sub = subtotal(), ship = sub >= FREE ? 0 : SHIP;
+  if (step === 'cart') {
+    $('#drTitle').textContent = `Carrello (${c})`;
+    body.innerHTML = Object.entries(cart).map(([k, q]) => `
+      <div class="line">
+        <div class="th">${thumb(k)}</div>
+        <div style="min-width:0"><div class="nm">${P[k].name}</div><div class="sub">${P[k].sub}</div>
+          <div class="qty" style="margin-top:6px"><button data-dec="${k}" aria-label="Diminuisci">−</button><output>${q}</output><button data-inc="${k}" aria-label="Aumenta">+</button></div></div>
+        <div class="rt"><b>${eur(P[k].price * q)}</b><button class="x" style="width:30px;height:30px;font-size:.8rem" data-rm="${k}" aria-label="Rimuovi ${P[k].name}">✕</button></div>
+      </div>`).join('');
+    const left = Math.max(0, FREE - sub);
+    foot.innerHTML = `
+      <div class="ship"><span>${left ? `Aggiungi ${eur(left)} per la spedizione gratuita` : 'Spedizione gratuita sbloccata'}</span><div class="bar"><i style="--f:${Math.min(1, sub / FREE)}"></i></div></div>
+      <div class="tot"><span>Subtotale</span><span>${eur(sub)}</span></div>
+      <div class="tot"><span>Spedizione</span><span>${ship ? eur(ship) : 'Gratis'}</span></div>
+      <div class="tot big"><span>Totale</span><span>${eur(sub + ship)}</span></div>
+      <button class="btn btn-primary" id="toCheckout">Vai alla cassa</button>`;
+    $('#toCheckout').onclick = () => { step = 'checkout'; renderCart(); };
+  } else if (step === 'checkout') {
+    $('#drTitle').textContent = 'Cassa';
+    body.innerHTML = `
+      <form class="co" id="coForm" novalidate>
+        <label>Nome e cognome<input id="co-name" required autocomplete="name" value=""></label>
+        <label>Email<input id="co-email" type="email" required autocomplete="email"></label>
+        <label>Indirizzo<input id="co-addr" required autocomplete="street-address"></label>
+        <div class="r2"><label>Città<input id="co-city" required autocomplete="address-level2"></label><label>CAP<input id="co-cap" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code"></label></div>
+        <p class="demo-note">Questo è un negozio dimostrativo: l'ordine viene simulato e non ti verrà addebitato nulla.</p>
+        <p id="coErr" style="color:var(--bad);font-size:.85rem" hidden></p>
+      </form>`;
+    foot.innerHTML = `
+      <div class="tot big"><span>Totale</span><span>${eur(sub + ship)}</span></div>
+      <button class="btn btn-primary" id="placeOrder">Conferma l'ordine</button>
+      <button class="btn btn-ghost" id="backCart">Torna al carrello</button>`;
+    $('#backCart').onclick = () => { step = 'cart'; renderCart(); };
+    $('#placeOrder').onclick = () => $('#coForm').requestSubmit();
+    $('#coForm').onsubmit = e => {
+      e.preventDefault();
+      const f = e.target, bad = $$('input', f).find(i => !i.checkValidity());
+      const err = $('#coErr');
+      if (bad) { err.hidden = false; err.textContent = bad.id === 'co-cap' ? 'Il CAP deve avere 5 cifre.' : bad.id === 'co-email' ? "Controlla l'indirizzo email." : 'Compila tutti i campi per spedire l\'ordine.'; bad.focus(); return; }
+      const code = 'RSP-' + Math.random().toString(36).slice(2, 7).toUpperCase();
+      const name = $('#co-name').value.split(' ')[0];
+      step = 'done'; cart = {}; save(); $('#cartCount').textContent = 0;
+      $('#drTitle').textContent = 'Ordine confermato';
+      body.innerHTML = `<div class="done"><div class="ok"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div><h3>Grazie, ${name.replace(/[<>&"]/g, '')}!</h3><p style="color:var(--muted)">Ordine simulato registrato. Codice:</p><span class="code">${code}</span></div>`;
+      foot.innerHTML = `<button class="btn btn-ghost" id="keepShop">Continua a guardare</button>`;
+      $('#keepShop').onclick = () => { step = 'cart'; closeCart(); };
+      const r = drawer.getBoundingClientRect();
+      burst(r.left + r.width / 2, r.top + 160, 40, [css('--led'), css('--clean'), css('--dust')]);
+    };
+  }
+}
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-add],[data-inc],[data-dec],[data-rm]');
+  if (!t) return;
+  if (t.dataset.add) add(t.dataset.add, 1, t);
+  else if (t.dataset.inc) { cart[t.dataset.inc]++; save(); renderCart(); }
+  else if (t.dataset.dec) { const k = t.dataset.dec; if (--cart[k] <= 0) delete cart[k]; save(); renderCart(); }
+  else if (t.dataset.rm) { delete cart[t.dataset.rm]; save(); renderCart(); }
+});
+renderCart();
+
+/* ---------- buy box ---------- */
+let qty = 1;
+function priceTween(el, to) {
+  if (reduce) { el.textContent = eur(to); return; }
+  const from = +el.dataset.v || to, t0 = performance.now();
+  el.dataset.v = to;
+  const tick = now => { const k = Math.min(1, (now - t0) / 500), e = 1 - Math.pow(1 - k, 3); el.textContent = eur(from + (to - from) * e); if (k < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+function updateBuy() {
+  const b = $('input[name=bundle]:checked').value, w = $('#warranty').checked;
+  $('#sumSub').textContent = P[b].sub + (w ? ' · garanzia 4 anni' : '');
+  $('#qOut').textContent = qty;
+  priceTween($('#sumTotal'), (P[b].price + (w ? 19 : 0)) * qty);
+}
+$('#sumTotal').dataset.v = 229;
+$$('input[name=bundle]').forEach(i => i.onchange = updateBuy);
+$('#warranty').onchange = updateBuy;
+$('#qMinus').onclick = () => { qty = Math.max(1, qty - 1); updateBuy(); };
+$('#qPlus').onclick = () => { qty = Math.min(9, qty + 1); updateBuy(); };
+$('#addMain').onclick = e => {
+  const b = $('input[name=bundle]:checked').value;
+  cart[b] = (cart[b] || 0) + qty;
+  if ($('#warranty').checked) cart.warranty = (cart.warranty || 0) + qty;
+  save(); renderCart(); fly(e.currentTarget);
+  toast(`${qty} × ${P[b].sub.toLowerCase()} nel carrello`);
+};
+
+/* ---------- magnetic buttons ---------- */
+if (!reduce) $$('.magnet').forEach(b => {
+  b.addEventListener('pointermove', e => {
+    const r = b.getBoundingClientRect();
+    b.style.setProperty('--mx', ((e.clientX - r.left) / r.width - .5) * 14 + 'px');
+    b.style.setProperty('--my', ((e.clientY - r.top) / r.height - .5) * 10 + 'px');
+  });
+  b.addEventListener('pointerleave', () => { b.style.setProperty('--mx', '0px'); b.style.setProperty('--my', '0px'); });
+});
+
+/* ---------- tilt tiles ---------- */
+if (!reduce) $$('.tilt').forEach(t => {
+  t.addEventListener('pointermove', e => {
+    const r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+    t.style.transform = `perspective(900px) rotateY(${(x - .5) * 10}deg) rotateX(${(.5 - y) * 8}deg)`;
+    t.style.setProperty('--gx', x * 100 + '%'); t.style.setProperty('--gy', y * 100 + '%');
+  });
+  t.addEventListener('pointerleave', () => t.style.transform = '');
+});
+
+/* ---------- lightbox ---------- */
+const lb = $('#lightbox');
+function openLb() { $('#lbImg').src = imgSrc; lb.hidden = false; $('#lbClose').focus(); }
+function closeLb() { lb.hidden = true; }
+$('#photoTile').onclick = openLb; $('#detailTile').onclick = openLb;
+$('#lbClose').onclick = closeLb; lb.onclick = e => { if (e.target === lb) closeLb(); };
+
+/* ---------- FAQ ---------- */
+$$('.qa button').forEach(b => b.onclick = () => {
+  const qa = b.parentElement, open = !qa.classList.contains('open');
+  qa.classList.toggle('open', open); b.setAttribute('aria-expanded', open);
+});
+
+/* ---------- modes (shared by hero chips + tabs) ---------- */
+const MODES = {
+  sleep:{title:'Notte: quasi non lo senti', text:'La ventola gira piano, il pannello si spegne e resta solo un LED tenue. Pensata per la camera da letto: 24 dB, meno di un sussurro.', db:24, w:4, rpm:420, spd:'4.2s', suction:.35, led:.15, bars:3, ring:.12},
+  auto:{title:'Auto: decide il sensore', text:'Il sensore laser legge il PM2.5 ogni pochi secondi. Quando cucini o apri la finestra la ventola accelera, poi torna al minimo appena l\'aria è pulita.', db:38, w:22, rpm:980, spd:'1.4s', suction:null, led:.5, bars:7, ring:.35},
+  turbo:{title:'Turbo: ricambio veloce', text:'Massima portata per pulire in fretta dopo le pulizie, la cucina o un ingresso di polline. Ideale per dieci minuti, poi torna in Auto.', db:56, w:45, rpm:1850, spd:'.38s', suction:1.5, led:1, bars:12, ring:.9}
+};
+let mode = 'auto';
+const bars = $('#dbBars');
+bars.innerHTML = Array.from({length:12}, (_, i) => `<i style="height:${8 + i * 2}px"></i>`).join('');
+const blades = $('#blades');
+blades.innerHTML = Array.from({length:7}, (_, i) => `<path transform="rotate(${i * 360 / 7})" d="M0 -18 C 30 -30, 60 -55, 50 -86 C 30 -90, 10 -70, -8 -20 Z"/>`).join('');
+function countTo(el, to) {
+  if (reduce) { el.textContent = to; return; }
+  const from = +el.textContent || 0, t0 = performance.now();
+  const tick = now => { const k = Math.min(1, (now - t0) / 600); el.textContent = Math.round(from + (to - from) * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+function setMode(m) {
+  mode = m; const M = MODES[m];
+  $$('[data-mode]').forEach(b => {
+    if (b.classList.contains('tab')) b.setAttribute('aria-selected', b.dataset.mode === m);
+    else b.setAttribute('aria-pressed', b.dataset.mode === m);
+  });
+  $('#modeTitle').textContent = M.title; $('#modeText').textContent = M.text;
+  countTo($('#roDb'), M.db); countTo($('#roW'), M.w); countTo($('#roRpm'), M.rpm);
+  const fb = $('#fanBox'); fb.style.setProperty('--spd', M.spd); fb.style.setProperty('--ring', M.ring);
+  $$('i', bars).forEach((b, i) => b.classList.toggle('on', i < M.bars));
+  $('#ledHalo').style.setProperty('--led-o', M.led);
+  movePill();
+}
+function movePill() {
+  const sel = $('.tab[aria-selected="true"]'), pill = $('#tabPill');
+  pill.style.width = sel.offsetWidth + 'px';
+  pill.style.transform = `translateX(${sel.offsetLeft}px)`;
+}
+$$('[data-mode]').forEach(b => b.onclick = () => setMode(b.dataset.mode));
+setMode('auto');
+addEventListener('resize', movePill);
+if (document.fonts) document.fonts.ready.then(movePill);
+
+/* ---------- stats counters ---------- */
+const cio = new IntersectionObserver(es => es.forEach(en => {
+  if (!en.isIntersecting) return; cio.unobserve(en.target);
+  if (reduce) return;
+  const el = en.target, to = +el.dataset.to, dec = +(el.dataset.dec || 0), t0 = performance.now();
+  const tick = now => { const k = Math.min(1, (now - t0) / 1400), e = 1 - Math.pow(1 - k, 4); el.textContent = num(to * e, dec); if (k < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}), {threshold:.6});
+$$('.count').forEach(c => cio.observe(c));
+
+/* ---------- reveal (only things below the fold at load) ---------- */
+if (!reduce) {
+  const rio = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.remove('pre'); rio.unobserve(en.target); } }), {threshold:.15});
+  $$('.rv').forEach(el => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); rio.observe(el); } });
+}
+
+/* ---------- scroll: progress, header, buybar, exploded filters ---------- */
+const track = $('#insideTrack'), stack = $('#stack'), layers = $$('.layer', stack), stepsEl = $$('.step');
+const layerFor = [3, 2, 1]; // step index -> layer index in DOM (fan, carbon, hepa, pre)
+let ticking = false;
+function onScroll() {
+  ticking = false;
+  const h = document.documentElement, max = h.scrollHeight - innerHeight;
+  $('#progress').style.setProperty('--sp', max > 0 ? scrollY / max : 0);
+  $('#top').classList.toggle('scrolled', scrollY > 10);
+  const heroB = $('#hero').getBoundingClientRect().bottom, buyT = $('#acquista').getBoundingClientRect().top;
+  $('#buybar').classList.toggle('on', heroB < 0 && buyT > innerHeight * .6);
+  let p = .7;
+  if (track.offsetHeight > innerHeight * 1.2) {
+    const r = track.getBoundingClientRect();
+    p = Math.min(1, Math.max(0, -r.top / (r.height - innerHeight)));
+  }
+  stack.style.setProperty('--p', reduce ? .7 : .15 + p * .85);
+  $('#meterFill').parentElement.style.setProperty('--p', p);
+  const active = p < .34 ? 0 : p < .67 ? 1 : 2;
+  stepsEl.forEach((s, i) => s.classList.toggle('on', i === active));
+  layers.forEach((l, i) => { l.classList.toggle('on', i === layerFor[active]); l.classList.toggle('dim', i !== layerFor[active] && i !== 0); });
+}
+addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
+addEventListener('resize', onScroll);
+onScroll();
+
+/* ---------- room simulator ---------- */
+const CADR = 380; let hgt = 2.7;
+function sim() {
+  const a = +$('#area').value, vol = a * hgt, ach = CADR / vol, min = vol / CADR * 60;
+  const t = Math.log(60 / 10) / ach * 60; // first-order decay, well-mixed room
+  $('#areaOut').textContent = a + ' m²';
+  $('#area').style.setProperty('--fill', ((a - 8) / 72 * 100) + '%');
+  $('#rVol').textContent = num(vol, 1); $('#rMin').textContent = num(min, 1);
+  $('#rAch').textContent = num(ach, 1); $('#rPm').textContent = '≈ ' + Math.round(t);
+  const v = $('#verdict');
+  if (ach >= 4.8) { v.style.setProperty('--v', 'var(--clean)'); v.textContent = 'Ottimo anche per chi soffre di allergie'; }
+  else if (ach >= 3) { v.style.setProperty('--v', 'var(--led)'); v.textContent = 'Buono per l\'uso quotidiano'; }
+  else { v.style.setProperty('--v', 'var(--bad)'); v.textContent = 'Stanza grande: valuta due purificatori'; }
+  const room = $('#room'); room.dataset.area = a + ' m²';
+  room.style.setProperty('--rw', (30 + Math.sqrt(a / 80) * 62) + '%');
+  $('#swirl').style.setProperty('--sw', Math.max(1.5, min / 2) + 's');
+}
+$('#area').oninput = sim;
+$$('#heightSeg button').forEach(b => b.onclick = () => { hgt = +b.dataset.h; $$('#heightSeg button').forEach(x => x.setAttribute('aria-pressed', x === b)); sim(); });
+sim();
+
+/* ---------- hero: spotlight ---------- */
+const hero = $('#hero');
+hero.addEventListener('pointermove', e => {
+  const r = hero.getBoundingClientRect();
+  hero.style.setProperty('--cx', (e.clientX - r.left) + 'px'); hero.style.setProperty('--cy', (e.clientY - r.top) + 'px');
+});
+
+/* ---------- hero: air particle simulation ---------- */
+const cv = $('#air'), ctx = cv.getContext('2d'), device = $('#device');
+let W = 0, H = 0, dpr = 1, dust = [], clean = [], N = 200, pointer = {x:-999, y:-999};
+let colDust = css('--dust'), colClean = css('--clean'), colLed = css('--led');
+setInterval(() => { colDust = css('--dust'); colClean = css('--clean'); colLed = css('--led'); }, 1000);
+function resize() {
+  dpr = Math.min(2, devicePixelRatio || 1); W = hero.clientWidth; H = hero.clientHeight;
+  cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  N = Math.round(Math.min(320, Math.max(120, W * H / 4200)));
+}
+function box() {
+  const r = device.getBoundingClientRect(), h = hero.getBoundingClientRect();
+  const x = r.left - h.left, y = r.top - h.top;
+  return {x, y, w:r.width, h:r.height, cx:x + r.width / 2, cy:y + r.height * .62, gy:y + r.height * .3, gl:x + r.width * .17, gw:r.width * .66};
+}
+function spawnDust(n, fromEdge) {
+  for (let i = 0; i < n; i++) {
+    const side = Math.random() < .5;
+    dust.push({
+      x: fromEdge ? (side ? -10 : W + 10) : Math.random() * W,
+      y: fromEdge ? H * (.2 + Math.random() * .8) : Math.random() * H,
+      vx: fromEdge ? (side ? 1 : -1) * (1.5 + Math.random() * 2.5) : 0,
+      vy: (Math.random() - .5) * .4, r: .8 + Math.random() * 2.2, s: Math.random() * 1000
+    });
+  }
+}
+resize(); spawnDust(Math.round(N * .72), false);
+addEventListener('resize', resize);
+hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); pointer.x = e.clientX - r.left; pointer.y = e.clientY - r.top; });
+hero.addEventListener('pointerleave', () => { pointer.x = pointer.y = -999; });
+$('#windowBtn').onclick = e => { spawnDust(Math.round(N * .7), true); toast('Finestra aperta: entra polline e polvere'); };
+
+let shown = 58, heroVisible = true;
+new IntersectionObserver(es => heroVisible = es[0].isIntersecting).observe(hero);
+function updateGauge() {
+  const target = 3 + 82 * Math.min(1, dust.length / N);
+  shown += (target - shown) * .06;
+  const v = Math.round(shown);
+  $('#pm').textContent = v;
+  const g = $('#gauge');
+  g.style.setProperty('--off', 150.8 * (1 - Math.min(1, v / 90)));
+  const q = v > 35 ? ['var(--bad)', 'Aria scarsa'] : v > 12 ? ['var(--dust)', 'Aria moderata'] : ['var(--clean)', 'Aria buona'];
+  g.style.setProperty('--q', q[0]); $('#pmq').textContent = q[1];
+}
+function frame(t) {
+  requestAnimationFrame(frame);
+  if (!heroVisible) return;
+  const b = box();
+  const auto = .35 + 1.1 * Math.min(1, dust.length / N);
+  const suction = MODES[mode].suction ?? auto;
+  ctx.clearRect(0, 0, W, H);
+  // ambient trickle so the room never becomes perfectly sterile
+  if (Math.random() < .05) spawnDust(1, true);
+  ctx.fillStyle = colDust;
+  for (let i = dust.length - 1; i >= 0; i--) {
+    const d = dust[i];
+    const dx = b.cx - d.x, dy = b.cy - d.y, dist = Math.hypot(dx, dy) || 1;
+    const f = suction * 26 / (dist + 80);
+    d.vx += dx / dist * f * .08 + Math.sin(t * .001 + d.s) * .03;
+    d.vy += dy / dist * f * .08 + Math.cos(t * .0013 + d.s) * .03;
+    const px = d.x - pointer.x, py = d.y - pointer.y, pd = Math.hypot(px, py);
+    if (pd < 90) { d.vx += px / pd * 1.2; d.vy += py / pd * 1.2; }
+    d.vx *= .95; d.vy *= .95;
+    d.x += d.vx; d.y += d.vy;
+    const inside = d.x > b.x + b.w * .1 && d.x < b.x + b.w * .9 && d.y > b.y + b.h * .32 && d.y < b.y + b.h * .95;
+    if (inside) {
+      dust.splice(i, 1);
+      clean.push({x:b.gl + Math.random() * b.gw, y:b.gy, vy:-(1 + Math.random() * 1.6) * (.6 + suction * .6), s:Math.random() * 6, life:1, c:Math.random() < .5});
+      continue;
+    }
+    ctx.globalAlpha = .75;
+    ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.283); ctx.fill();
+  }
+  for (let i = clean.length - 1; i >= 0; i--) {
+    const c = clean[i];
+    c.y += c.vy; c.x += Math.sin(t * .002 + c.s) * .5; c.life -= .007;
+    if (c.life <= 0) { clean.splice(i, 1); continue; }
+    ctx.globalAlpha = c.life * .9; ctx.fillStyle = c.c ? colClean : colLed;
+    ctx.beginPath(); ctx.arc(c.x, c.y, 1.6, 0, 6.283); ctx.fill();
+    ctx.globalAlpha = c.life * .25;
+    ctx.fillRect(c.x - .5, c.y, 1, 14);
+  }
+  ctx.globalAlpha = 1;
+  updateGauge();
+}
+if (reduce) {
+  ctx.fillStyle = colDust;
+  dust.slice(0, 80).forEach(d => { ctx.globalAlpha = .6; ctx.beginPath(); ctx.arc(d.x, d.y, d.r, 0, 6.283); ctx.fill(); });
+} else requestAnimationFrame(frame);
+})();
+</script>
+
+</body>
+</html>
